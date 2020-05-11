@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FEEDNESS</string>
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">239138860634073</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb239138860634073</string>
+    <string name="get_started_button">Get Started!</string>
+    <string name="welcome_string">A simple way to keep track of your calories</string>
+    <string name="drawer_name">Name</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Closed</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="calories_tab">Calories</string>
+    <string name="macros_tab">Macros</string>
+    <string name="pick_date_string">Pick a date to show nutritional data</string>
+    <string name="confirm_button">Confirm</string>
+</resources>
