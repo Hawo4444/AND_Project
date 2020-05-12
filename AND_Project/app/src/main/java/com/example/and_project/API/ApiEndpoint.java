@@ -13,6 +13,6 @@ public interface ApiEndpoint
     String APPLICATION_KEY = "393131f5a5db246d4e4a532947e09caf";
 
     @GET("v2/search/instant?query={foodDetails}")//detailed = true
-    @Headers({"x-app-id", APPLICATION_ID},{"x-app-PkrojectD})
+    //@Headers({"x-app-id", APPLICATION_ID},{"x-app-PkrojectD"})
     Call<FoodInformationFromAPI> getFoodInformation(@Path("foodDetails") String foodDetails);
 }

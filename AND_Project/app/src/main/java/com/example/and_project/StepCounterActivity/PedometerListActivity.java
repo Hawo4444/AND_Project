@@ -14,13 +14,14 @@ import com.example.and_project.R;
 
 import java.util.ArrayList;
 
-public class PedometerListActivity extends Activity {
-
+public class PedometerListActivity extends Activity
+{
     private ListView mSensorListView;
     private ListAdapter mListAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_counter);
         mSensorListView = (ListView) findViewById(R.id.steps_list);
@@ -34,8 +35,8 @@ public class PedometerListActivity extends Activity {
         startService(mStepsIntent);
     }
 
-    static class DateStepsModel {
-
+    static class DateStepsModel
+    {
         public String mDate;
         public int mStepCount;
     }
@@ -43,42 +44,41 @@ public class PedometerListActivity extends Activity {
     private StepsDBHelper mStepsDBHelper;
     private ArrayList mStepCountList;
 
-    public void getDataForList() {
+    public void getDataForList()
+    {
         mStepsDBHelper = new StepsDBHelper(this);
         mStepCountList = mStepsDBHelper.readStepsEntries();
     }
 
-
-    private class ListAdapter extends BaseAdapter {
-
+    private class ListAdapter extends BaseAdapter
+    {
         private TextView mDateStepCountText;
 
         @Override
-        public int getCount() {
-
+        public int getCount()
+        {
             return mStepCountList.size();
         }
 
         @Override
-        public Object getItem(int position) {
-
+        public Object getItem(int position)
+        {
             return mStepCountList.get(position);
         }
 
         @Override
-        public long getItemId(int position) {
-
+        public long getItemId(int position)
+        {
             return position;
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            if (convertView == null) {
-
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
+            if (convertView == null)
+            {
                 convertView = getLayoutInflater().inflate(R.layout.list_rows, parent, false);
             }
-
             mDateStepCountText = (TextView) convertView.findViewById(R.id.sensor_name);
             mDateStepCountText.setText(((DateStepsModel) mStepCountList.get(position)).mDate + " - Total Steps: " + String.valueOf(((DateStepsModel) mStepCountList.get(position)).mStepCount));
 
