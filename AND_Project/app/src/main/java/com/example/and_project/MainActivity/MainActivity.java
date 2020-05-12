@@ -20,7 +20,6 @@ import com.example.and_project.ProfileActivity;
 import com.example.and_project.R;
 import com.example.and_project.StepCounterActivity.PedometerListActivity;
 import com.example.and_project.SettingsActivity;
-import com.example.and_project.StepCounterActivity.StepsService;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
