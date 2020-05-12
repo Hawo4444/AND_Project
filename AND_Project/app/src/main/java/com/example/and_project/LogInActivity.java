@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
-public class LogInActivity extends AppCompatActivity
+public class LogInActivity extends AppCompatActivity //2x main
 {
 
     private static final int RC_SIGN_IN = 1;
