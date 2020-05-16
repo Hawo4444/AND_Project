@@ -1,4 +1,4 @@
-package com.example.and_project.MainActivity;
+package com.example.and_project.mainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,7 +18,7 @@ import com.example.and_project.GoalsActivity;
 import com.example.and_project.LogInActivity;
 import com.example.and_project.ProfileActivity;
 import com.example.and_project.R;
-import com.example.and_project.StepCounterActivity.PedometerListActivity;
+import com.example.and_project.stepCounterActivity.PedometerListActivity;
 import com.example.and_project.SettingsActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;

@@ -1,5 +1,6 @@
-package com.example.and_project.MainActivity;
+package com.example.and_project.mainActivity;
 
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,11 +107,12 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    class AddButtonViewHolder extends RecyclerView.ViewHolder
+    class AddButtonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         AddButtonViewHolder(View itemView)
         {
             super(itemView);
+            itemView.setOnClickListener(this);
         }
 
         void bindView(int position)
@@ -118,9 +120,15 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             AddButton addButton = (AddButton) rvItemsList.get(position);
             //set listener
         }
+
+        @Override
+        public void onClick(View v)
+        {
+
+        }
     }
 
-    class MealViewHolder extends RecyclerView.ViewHolder
+    class MealViewHolder extends RecyclerView.ViewHolder implements View.OnDragListener
     {
         TextView mealName;
         TextView mealCalories;
@@ -138,6 +146,13 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             MealDetails mealDetails = (MealDetails) rvItemsList.get(position);
             mealName.setText(mealDetails.getName());
             mealCalories.setText(mealDetails.getCalories());
+        }
+
+        @Override
+        public boolean onDrag(View v, DragEvent event)
+        {
+            //remove view
+            return false;
         }
     }
 }

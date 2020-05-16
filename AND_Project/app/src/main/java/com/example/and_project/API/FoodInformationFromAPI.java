@@ -1,4 +1,4 @@
-package com.example.and_project.API;
+package com.example.and_project.api;
 
 public class FoodInformationFromAPI
 {

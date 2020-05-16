@@ -1,11 +1,10 @@
-package com.example.and_project.StepCounterActivity;
+package com.example.and_project.stepCounterActivity;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.example.and_project.StepCounterActivity.PedometerListActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;

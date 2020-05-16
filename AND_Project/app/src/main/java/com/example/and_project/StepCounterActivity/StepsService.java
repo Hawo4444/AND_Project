@@ -1,4 +1,4 @@
-package com.example.and_project.StepCounterActivity;
+package com.example.and_project.stepCounterActivity;
 
 import android.app.Service;
 import android.content.Context;
