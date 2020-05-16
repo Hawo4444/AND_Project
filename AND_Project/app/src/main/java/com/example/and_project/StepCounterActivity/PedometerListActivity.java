@@ -1,6 +1,5 @@
 package com.example.and_project.stepCounterActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +9,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.and_project.R;
 
 import java.util.ArrayList;
 
-public class PedometerListActivity extends Activity
+public class PedometerListActivity extends AppCompatActivity
 {
     private ListView mSensorListView;
     private ListAdapter mListAdapter;
@@ -25,6 +27,11 @@ public class PedometerListActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_counter);
         mSensorListView = (ListView) findViewById(R.id.steps_list);
+
+        Toolbar toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.calendar_activity_header);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getDataForList();
 

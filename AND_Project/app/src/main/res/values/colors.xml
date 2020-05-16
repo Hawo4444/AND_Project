@@ -7,4 +7,5 @@
     <color name="colorDarkText">#000000</color>
     <color name="colorLightText">#FFFFFF</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorCardHeader">#F0F0F0</color>
 </resources>

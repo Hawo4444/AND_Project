@@ -4,7 +4,8 @@
     android:layout_height="45dp"
     android:clickable="true"
     android:focusable="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <ImageView
         android:layout_width="@android:dimen/app_icon_size"

@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.and_project">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,26 +14,42 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".mainActivity.AddMealActivity"
+            android:parentActivityName=".mainActivity.MainActivity">
+        </activity>
 
-        <activity android:name=".stepCounterActivity.PedometerListActivity" />
+        <activity android:name=".SettingsActivity"
+            android:parentActivityName=".mainActivity.MainActivity">
+        </activity>
 
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".stepCounterActivity.PedometerListActivity"
+            android:parentActivityName=".mainActivity.MainActivity">
+        </activity>
 
-        <activity android:name=".GoalsActivity" />
+        <activity android:name=".CalendarActivity"
+            android:parentActivityName=".mainActivity.MainActivity">
+        </activity>
 
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".GoalsActivity"
+            android:parentActivityName=".mainActivity.MainActivity">
+        </activity>
+
+        <activity android:name=".ProfileActivity"
+            android:parentActivityName=".mainActivity.MainActivity">
+        </activity>
 
         <activity android:name=".LogInActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.SEND"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".mainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,10 +1,13 @@
 package com.example.and_project.mainActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,11 +23,11 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CaloriesFragment extends Fragment
+public class CaloriesFragment extends Fragment implements CaloriesListAdapter.OnAddListener
 {
-
-    RecyclerView caloriesList;
-    CaloriesListAdapter caloriesListAdapter;
+    RecyclerView mCaloriesList;
+    CaloriesListAdapter mCaloriesListAdapter;
+    ArrayList<RecyclerViewItem> items = new ArrayList<>();;
 
     public CaloriesFragment()
     {
@@ -40,16 +43,16 @@ public class CaloriesFragment extends Fragment
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext()); //check argument
 
-        caloriesList = view.findViewById(R.id.calories_rv);
-        caloriesList.hasFixedSize();
-        caloriesList.setLayoutManager(layoutManager);
+        mCaloriesList = view.findViewById(R.id.calories_rv);
+        mCaloriesList.hasFixedSize();
+        mCaloriesList.setLayoutManager(layoutManager);
 
-        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(caloriesList.getContext(),
+        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(mCaloriesList.getContext(),
                 layoutManager.getOrientation());
-        caloriesList.addItemDecoration(mDividerItemDecoration);
+        mCaloriesList.addItemDecoration(mDividerItemDecoration);
 
-        ArrayList<RecyclerViewItem> items = new ArrayList<>();
         items.add(new Header("Breakfast"));
+        items.add(new MealDetails("Chicken", 150));
         items.add(new AddButton());
         items.add(new Header("Lunch"));
         items.add(new AddButton());
@@ -58,10 +61,43 @@ public class CaloriesFragment extends Fragment
         items.add(new Header("Snacks"));
         items.add(new AddButton());
 
-        caloriesListAdapter = new CaloriesListAdapter(items);
-        caloriesList.setAdapter(caloriesListAdapter);
+        mCaloriesListAdapter = new CaloriesListAdapter(items, this);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mCaloriesList);
+        mCaloriesList.setAdapter(mCaloriesListAdapter);
 
         return view;
     }
 
+    @Override
+    public void onAddClick(int position)
+    {
+        items.get(position);
+        Intent intent = new Intent(getContext(), AddMealActivity.class); //to be created
+        startActivity(intent); //use position?
+    }
+
+    private ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT)
+    {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target)
+        {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
+        {
+            if (viewHolder instanceof CaloriesListAdapter.MealViewHolder)
+            {
+                items.remove(viewHolder);
+                mCaloriesListAdapter.notifyDataSetChanged();
+            }
+        }
+
+        @Override
+        public int 	getSwipeDirs(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+            if (viewHolder instanceof CaloriesListAdapter.HeaderViewHolder || viewHolder instanceof CaloriesListAdapter.AddButtonViewHolder) return 0;
+            return super.getSwipeDirs(recyclerView, viewHolder);
+        }
+    };
 }

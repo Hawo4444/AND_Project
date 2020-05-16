@@ -16,4 +16,9 @@
     <string name="macros_tab">Macros</string>
     <string name="pick_date_string">Pick a date to show nutritional data</string>
     <string name="confirm_button">Confirm</string>
+    <string name="goals_activity_header">Goals</string>
+    <string name="calendar_activity_header">Calendar</string>
+    <string name="profile_activity_header">Profile</string>
+    <string name="settings_activity_header">Settings</string>
+    <string name="add_meal_activity_header">Add Meal</string>
 </resources>

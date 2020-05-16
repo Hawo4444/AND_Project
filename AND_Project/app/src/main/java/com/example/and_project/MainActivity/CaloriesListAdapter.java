@@ -16,9 +16,11 @@ import java.util.ArrayList;
 public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     private ArrayList<RecyclerViewItem> rvItemsList;
+    private OnAddListener mOnAddListener;
 
-    public CaloriesListAdapter(ArrayList rvItemsList)
+    public CaloriesListAdapter(ArrayList rvItemsList, OnAddListener onAddListener)
     {
+        mOnAddListener = onAddListener;
         setCaloriesPageList(rvItemsList);
     }
 
@@ -33,7 +35,7 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 return new HeaderViewHolder(view);
             case (RecyclerViewItem.TYPE_ADD_BUTTON):
                 view = inflater.inflate(R.layout.rv_item_add_meal, parent, false);
-                return new AddButtonViewHolder(view);
+                return new AddButtonViewHolder(view, mOnAddListener);
             case (RecyclerViewItem.TYPE_MEAL):
                 view = inflater.inflate(R.layout.rv_item_meal, parent, false);
                 return new MealViewHolder(view);
@@ -109,9 +111,12 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     class AddButtonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-        AddButtonViewHolder(View itemView)
+        OnAddListener onAddListener;
+
+        AddButtonViewHolder(View itemView, OnAddListener onAddListener)
         {
             super(itemView);
+            this.onAddListener = onAddListener;
             itemView.setOnClickListener(this);
         }
 
@@ -124,8 +129,13 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         @Override
         public void onClick(View v)
         {
-
+            mOnAddListener.onAddClick(getAdapterPosition());
         }
+    }
+
+    public interface OnAddListener
+    {
+        void onAddClick(int position);
     }
 
     class MealViewHolder extends RecyclerView.ViewHolder implements View.OnDragListener
@@ -145,7 +155,7 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         {
             MealDetails mealDetails = (MealDetails) rvItemsList.get(position);
             mealName.setText(mealDetails.getName());
-            mealCalories.setText(mealDetails.getCalories());
+            mealCalories.setText(String.valueOf(mealDetails.getCalories()));
         }
 
         @Override
@@ -154,6 +164,11 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             //remove view
             return false;
         }
+    }
+
+    public interface OnDragListener
+    {
+        void onMealDragged(int position);
     }
 }
 

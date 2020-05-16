@@ -2,6 +2,7 @@ package com.example.and_project;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,11 @@ public class CalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        Toolbar toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.calendar_activity_header);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mCalendarView = findViewById(R.id.calendar_view);
         textView = findViewById(R.id.text_view_test_date); //remove
