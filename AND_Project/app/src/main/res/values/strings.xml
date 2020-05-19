@@ -21,4 +21,9 @@
     <string name="profile_activity_header">Profile</string>
     <string name="settings_activity_header">Settings</string>
     <string name="add_meal_activity_header">Add Meal</string>
+    <string name="carb_macro">Carbohydrates:</string>
+    <string name="fat_macro">Fats</string>
+    <string name="protein_macro">Proteins:</string>
+    <string name="macros_tab_header">Today\'s progress:</string>
+    <string name="step_counter_activity_header">Step Counter</string>
 </resources>

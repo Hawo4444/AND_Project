@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.and_project">
 
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -54,8 +55,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".stepCounterActivity.StepsService" />
-
+        <service android:name=".stepCounterActivity.StepsService"
+            android:foregroundServiceType="" />
     </application>
 
 </manifest>
