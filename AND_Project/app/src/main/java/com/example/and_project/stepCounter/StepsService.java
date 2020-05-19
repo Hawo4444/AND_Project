@@ -1,7 +1,6 @@
-package com.example.and_project.stepCounterActivity;
+package com.example.and_project.stepCounter;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.example.and_project.database.StepsRepository;
-import com.example.and_project.mainActivity.MainActivity;
-
-import static androidx.core.app.ActivityCompat.requestPermissions;
 
 public class StepsService extends Service implements SensorEventListener
 {

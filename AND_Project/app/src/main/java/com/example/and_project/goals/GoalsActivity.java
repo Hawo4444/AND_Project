@@ -1,9 +1,11 @@
-package com.example.and_project;
+package com.example.and_project.goals;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+
+import com.example.and_project.R;
 
 public class GoalsActivity extends AppCompatActivity {
 

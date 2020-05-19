@@ -22,4 +22,6 @@ public interface StepsDao
 
     @Query("SELECT * FROM Steps WHERE Date=:date")
     Steps getStepsForDate(String date);
+
+    //upsert?
 }

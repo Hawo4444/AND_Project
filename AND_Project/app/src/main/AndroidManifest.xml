@@ -15,31 +15,31 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".mainActivity.AddMealActivity"
-            android:parentActivityName=".mainActivity.MainActivity">
+        <activity android:name=".main.AddMealActivity"
+            android:parentActivityName=".main.MainActivity">
         </activity>
 
-        <activity android:name=".SettingsActivity"
-            android:parentActivityName=".mainActivity.MainActivity">
+        <activity android:name=".settings.SettingsActivity"
+            android:parentActivityName=".main.MainActivity">
         </activity>
 
-        <activity android:name=".stepCounterActivity.PedometerListActivity"
-            android:parentActivityName=".mainActivity.MainActivity">
+        <activity android:name=".stepCounter.PedometerListActivity"
+            android:parentActivityName=".main.MainActivity">
         </activity>
 
-        <activity android:name=".CalendarActivity"
-            android:parentActivityName=".mainActivity.MainActivity">
+        <activity android:name=".calendar.CalendarActivity"
+            android:parentActivityName=".main.MainActivity">
         </activity>
 
-        <activity android:name=".GoalsActivity"
-            android:parentActivityName=".mainActivity.MainActivity">
+        <activity android:name=".goals.GoalsActivity"
+            android:parentActivityName=".main.MainActivity">
         </activity>
 
-        <activity android:name=".ProfileActivity"
-            android:parentActivityName=".mainActivity.MainActivity">
+        <activity android:name=".profile.ProfileActivity"
+            android:parentActivityName=".main.MainActivity">
         </activity>
 
-        <activity android:name=".LogInActivity">
+        <activity android:name=".login.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".mainActivity.MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +55,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".stepCounterActivity.StepsService"
+        <service android:name=".stepCounter.StepsService"
             android:foregroundServiceType="" />
     </application>
 

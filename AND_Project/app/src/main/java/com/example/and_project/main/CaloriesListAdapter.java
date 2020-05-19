@@ -1,4 +1,4 @@
-package com.example.and_project.mainActivity;
+package com.example.and_project.main;
 
 import android.view.DragEvent;
 import android.view.LayoutInflater;

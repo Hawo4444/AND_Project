@@ -1,4 +1,4 @@
-package com.example.and_project.stepCounterActivity;
+package com.example.and_project.stepCounter;
 
 import android.content.ContentValues;
 import android.content.Context;

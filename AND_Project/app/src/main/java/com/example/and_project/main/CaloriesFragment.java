@@ -1,4 +1,4 @@
-package com.example.and_project.mainActivity;
+package com.example.and_project.main;
 
 
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,15 +27,15 @@ import java.util.ArrayList;
  */
 public class CaloriesFragment extends Fragment implements CaloriesListAdapter.OnAddListener
 {
-    RecyclerView mCaloriesList;
-    CaloriesListAdapter mCaloriesListAdapter;
-    ArrayList<RecyclerViewItem> items = new ArrayList<>();;
+    private RecyclerView mCaloriesList;
+    private CaloriesListAdapter mCaloriesListAdapter;
+    private ArrayList<RecyclerViewItem> items = new ArrayList<>();
+    private CaloriesFragmentViewModel caloriesFragmentViewModel;
 
     public CaloriesFragment()
     {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -64,6 +66,9 @@ public class CaloriesFragment extends Fragment implements CaloriesListAdapter.On
         mCaloriesListAdapter = new CaloriesListAdapter(items, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mCaloriesList);
         mCaloriesList.setAdapter(mCaloriesListAdapter);
+
+        caloriesFragmentViewModel = new ViewModelProvider(this).get(CaloriesFragmentViewModel.class);
+        //observe data
 
         return view;
     }

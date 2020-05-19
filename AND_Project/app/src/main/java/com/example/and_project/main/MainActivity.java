@@ -1,4 +1,4 @@
-package com.example.and_project.mainActivity;
+package com.example.and_project.main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -13,13 +13,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.and_project.CalendarActivity;
-import com.example.and_project.GoalsActivity;
-import com.example.and_project.LogInActivity;
-import com.example.and_project.ProfileActivity;
+import com.example.and_project.calendar.CalendarActivity;
+import com.example.and_project.goals.GoalsActivity;
+import com.example.and_project.login.LogInActivity;
+import com.example.and_project.profile.ProfileActivity;
 import com.example.and_project.R;
-import com.example.and_project.stepCounterActivity.PedometerListActivity;
-import com.example.and_project.SettingsActivity;
+import com.example.and_project.stepCounter.PedometerListActivity;
+import com.example.and_project.settings.SettingsActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;

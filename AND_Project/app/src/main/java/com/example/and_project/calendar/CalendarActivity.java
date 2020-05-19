@@ -1,4 +1,4 @@
-package com.example.and_project;
+package com.example.and_project.calendar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView; // remove
+
+import com.example.and_project.R;
 
 public class CalendarActivity extends AppCompatActivity {
 
