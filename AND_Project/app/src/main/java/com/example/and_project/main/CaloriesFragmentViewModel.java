@@ -2,6 +2,7 @@ package com.example.and_project.main;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -15,7 +16,7 @@ public class CaloriesFragmentViewModel extends AndroidViewModel
     private MealsRepository repository;
     private MutableLiveData<ArrayList<RecyclerViewItem>> items;
 
-    public CaloriesFragmentViewModel(Application application)
+    public CaloriesFragmentViewModel(@NonNull Application application)
     {
         super(application);
         repository = new MealsRepository(application);

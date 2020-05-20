@@ -18,7 +18,7 @@ import com.example.and_project.goals.GoalsActivity;
 import com.example.and_project.login.LogInActivity;
 import com.example.and_project.profile.ProfileActivity;
 import com.example.and_project.R;
-import com.example.and_project.stepCounter.PedometerListActivity;
+import com.example.and_project.stepCounter.StepCounterActivity;
 import com.example.and_project.settings.SettingsActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(calendarIntent);
                 return true;
             case R.id.stepCounter:
-                Intent stepCounterIntent = new Intent(MainActivity.this, PedometerListActivity.class);
+                Intent stepCounterIntent = new Intent(MainActivity.this, StepCounterActivity.class);
                 startActivity(stepCounterIntent);
                 return true;
             case R.id.settings:

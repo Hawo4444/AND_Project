@@ -73,14 +73,14 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    public void setCaloriesPageList(ArrayList<? extends RecyclerViewItem> literatureList)
+    public void setCaloriesPageList(ArrayList<? extends RecyclerViewItem> caloriesList)
     {
         if (rvItemsList == null)
         {
             rvItemsList = new ArrayList<>();
         }
         rvItemsList.clear();
-        rvItemsList.addAll(literatureList);
+        rvItemsList.addAll(caloriesList);
         notifyDataSetChanged();
     }
 
@@ -123,7 +123,6 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         void bindView(int position)
         {
             AddButton addButton = (AddButton) rvItemsList.get(position);
-            //set listener
         }
 
         @Override

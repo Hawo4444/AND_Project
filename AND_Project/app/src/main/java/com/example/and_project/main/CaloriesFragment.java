@@ -43,25 +43,14 @@ public class CaloriesFragment extends Fragment implements CaloriesListAdapter.On
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calories, container, false);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext()); //check argument
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 
         mCaloriesList = view.findViewById(R.id.calories_rv);
         mCaloriesList.hasFixedSize();
         mCaloriesList.setLayoutManager(layoutManager);
 
-        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(mCaloriesList.getContext(),
-                layoutManager.getOrientation());
+        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(mCaloriesList.getContext(), layoutManager.getOrientation());
         mCaloriesList.addItemDecoration(mDividerItemDecoration);
-
-        items.add(new Header("Breakfast"));
-        items.add(new MealDetails("Chicken", 150));
-        items.add(new AddButton());
-        items.add(new Header("Lunch"));
-        items.add(new AddButton());
-        items.add(new Header("Dinner"));
-        items.add(new AddButton());
-        items.add(new Header("Snacks"));
-        items.add(new AddButton());
 
         mCaloriesListAdapter = new CaloriesListAdapter(items, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mCaloriesList);

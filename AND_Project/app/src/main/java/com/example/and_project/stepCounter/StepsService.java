@@ -9,20 +9,17 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-
-import com.example.and_project.database.StepsRepository;
 
 public class StepsService extends Service implements SensorEventListener
 {
     private SensorManager mSensorManager;
     private Sensor mStepDetectorSensor;
-    //private StepsDBHelper mStepsDBHelper;
-    private StepsRepository repository;
+    private StepCounterViewModel stepCounterViewModel;
 
     @Override
     public void onCreate()
@@ -32,7 +29,6 @@ public class StepsService extends Service implements SensorEventListener
 
         if (mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null)
         {
-            System.out.println(checkPermission(this));
             mStepDetectorSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
             mSensorManager.registerListener(this, mStepDetectorSensor, SensorManager.SENSOR_DELAY_NORMAL);
             System.out.println(mStepDetectorSensor);
@@ -41,12 +37,6 @@ public class StepsService extends Service implements SensorEventListener
         {
             Toast.makeText(this, "No step detector available", Toast.LENGTH_SHORT).show();
         }
-
-        repository = new StepsRepository(getApplication());
-    }
-
-    public static boolean checkPermission(final Context context) {
-        return ActivityCompat.checkSelfPermission(context, Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_GRANTED;
     }
 
     @Override
@@ -60,15 +50,15 @@ public class StepsService extends Service implements SensorEventListener
     @Override
     public IBinder onBind(Intent intent)
     {
+        Bundle bundle = intent.getExtras();
+        stepCounterViewModel = bundle.getBinder();
         return null;
     }
 
     @Override
     public void onSensorChanged(SensorEvent event)
     {
-        //mStepsDBHelper.createStepsEntry();
-        repository.createStepsEntry();
-        System.out.println("Step");
+        StepCounterViewModel
     }
 
     @Override

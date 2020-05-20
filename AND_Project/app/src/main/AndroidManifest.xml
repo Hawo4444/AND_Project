@@ -23,7 +23,7 @@
             android:parentActivityName=".main.MainActivity">
         </activity>
 
-        <activity android:name=".stepCounter.PedometerListActivity"
+        <activity android:name=".stepCounter.StepCounterActivity"
             android:parentActivityName=".main.MainActivity">
         </activity>
 

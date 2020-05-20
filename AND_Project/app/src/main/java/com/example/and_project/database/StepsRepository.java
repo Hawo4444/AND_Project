@@ -21,11 +21,9 @@ public class StepsRepository
         allStepsEntries = stepsDao.getAllStepsEntries();
     }
 
-    public void insert()
+    public void insert(Steps steps)
     {
-        Calendar mCalendar = Calendar.getInstance();
-        String date = String.valueOf(mCalendar.get(Calendar.MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.YEAR));
-        new InsertStepsAsyncTask(stepsDao).execute(new Steps(date, 1));
+        new InsertStepsAsyncTask(stepsDao).execute(steps);
     }
 
     public void update(Steps steps)
@@ -33,38 +31,14 @@ public class StepsRepository
         new UpdateStepsAsyncTask(stepsDao).execute(steps);
     }
 
-    public LiveData<List<Steps>> getAllStepsEntries()
+    public Steps getStepsForDate(String date)
     {
-        return allStepsEntries;
-    }
-
-    public Steps getStepsForDate()
-    {
-        Calendar mCalendar = Calendar.getInstance();
-        String date = String.valueOf(mCalendar.get(Calendar.MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.YEAR));
         return stepsDao.getStepsForDate(date);
     }
 
-    public void createStepsEntry()
+    public LiveData<List<Steps>> getAllStepsEntries()
     {
-        try
-        {
-            Steps currentSteps = getStepsForDate();
-            if(currentSteps != null)
-            {
-                currentSteps.setSteps(currentSteps.getSteps()+1);
-                update(currentSteps);
-                Log.d("count", currentSteps.getSteps()+"");
-            }
-            else
-            {
-                insert();
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        return allStepsEntries;
     }
 
     private static class InsertStepsAsyncTask extends AsyncTask<Steps, Void, Void>
@@ -101,7 +75,7 @@ public class StepsRepository
         }
     }
 
-    private static class GetStepsForDateAsyncTask extends AsyncTask<String, Void, Steps>
+    /*private static class GetStepsForDateAsyncTask extends AsyncTask<String, Void, Steps>
     {
         private StepsDao stepsDao;
 
@@ -113,8 +87,7 @@ public class StepsRepository
         @Override
         protected Steps doInBackground(String... strings)
         {
-            stepsDao.getStepsForDate(strings[0]);
-            return null;
+            return stepsDao.getStepsForDate(strings[0]);
         }
-    }
+    }*/
 }
