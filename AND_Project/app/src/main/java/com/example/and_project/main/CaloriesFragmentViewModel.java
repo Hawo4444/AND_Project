@@ -19,7 +19,7 @@ public class CaloriesFragmentViewModel extends AndroidViewModel
     public CaloriesFragmentViewModel(@NonNull Application application)
     {
         super(application);
-        repository = new MealsRepository(application);
+        repository = MealsRepository.getInstance(getApplication());
         items = repository.getMealsForDate();
     }
 

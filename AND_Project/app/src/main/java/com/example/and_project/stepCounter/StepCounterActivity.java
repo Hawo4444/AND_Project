@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.and_project.R;
 import com.example.and_project.database.Steps;
-import com.example.and_project.database.StepsRepository;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.fitness.Fitness;
@@ -65,7 +64,7 @@ public class StepCounterActivity extends AppCompatActivity
         getSupportActionBar().setTitle(R.string.step_counter_activity_header);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mStepsList = findViewById(R.id.calories_rv);
+        mStepsList = findViewById(R.id.steps_list);
         mStepsList.hasFixedSize();
         mStepsList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -78,12 +77,12 @@ public class StepCounterActivity extends AppCompatActivity
             @Override
             public void onChanged(List<Steps> steps)
             {
+                System.out.println("data changed");
                 mStepCounterListAdapter.setSteps(steps);
             }
         });
 
         Intent mStepsIntent = new Intent(getApplicationContext(), StepsService.class);
-        mStepsIntent.putExtra("viewmodel", stepCounterViewModel.getClass());
         startService(mStepsIntent);
     }
 
@@ -126,10 +125,5 @@ public class StepCounterActivity extends AppCompatActivity
                 {
                     Log.d(TAG, "OnFailure()", e);
                 });
-    }
-
-    public void getDataForList()
-    {
-        stepCounterViewModel.getAllStepsEntries();
     }
 }

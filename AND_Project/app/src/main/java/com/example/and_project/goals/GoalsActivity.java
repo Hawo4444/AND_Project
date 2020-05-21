@@ -19,4 +19,6 @@ public class GoalsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.goals_activity_header);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    public voi
 }

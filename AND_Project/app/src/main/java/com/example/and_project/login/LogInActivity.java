@@ -92,7 +92,7 @@ public class LogInActivity extends AppCompatActivity
     {
         // [START auth_fui_signout]
         AuthUI.getInstance()
-                .delete(this)
+                .signOut(this)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     public void onComplete(@NonNull Task<Void> task) {
                         // ...

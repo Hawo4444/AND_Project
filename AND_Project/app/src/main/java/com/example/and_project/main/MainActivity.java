@@ -20,20 +20,19 @@ import com.example.and_project.profile.ProfileActivity;
 import com.example.and_project.R;
 import com.example.and_project.stepCounter.StepCounterActivity;
 import com.example.and_project.settings.SettingsActivity;
+import com.example.and_project.stepCounter.StepsService;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FirebaseAuth.AuthStateListener
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //checkCurrentUser();
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -75,22 +74,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
-    public void checkCurrentUser()
+    @Override
+    protected void onStart()
     {
-        // [START check_current_user]
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null)
+        super.onStart();
+        FirebaseAuth.getInstance().addAuthStateListener(this);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        FirebaseAuth.getInstance().addAuthStateListener(this);
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        FirebaseAuth.getInstance().removeAuthStateListener(this);
+    }
+
+    @Override
+    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth)
+    {
+        if(firebaseAuth.getCurrentUser() == null)
         {
-            // User is signed in
-            //Create al classes
-        }
-        else
-            {
-            Intent intent = new Intent(this, LogInActivity.class);
+            Intent intent = new Intent(getApplication(), LogInActivity.class);
             startActivity(intent);
             finish();
         }
-        // [END check_current_user]
     }
 
     @Override

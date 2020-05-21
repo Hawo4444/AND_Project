@@ -1,25 +1,30 @@
 package com.example.and_project.stepCounter;
 
-import android.Manifest;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.and_project.database.Steps;
+import com.example.and_project.database.StepsRepository;
+
+import java.util.Calendar;
+
 public class StepsService extends Service implements SensorEventListener
 {
     private SensorManager mSensorManager;
     private Sensor mStepDetectorSensor;
-    private StepCounterViewModel stepCounterViewModel;
+
+    private int stepsCountForToday;
+    private String date;
+
+    private StepsRepository repository;
 
     @Override
     public void onCreate()
@@ -37,6 +42,18 @@ public class StepsService extends Service implements SensorEventListener
         {
             Toast.makeText(this, "No step detector available", Toast.LENGTH_SHORT).show();
         }
+
+        date = checkDate();
+
+        repository = StepsRepository.getInstance(getApplication());
+        if(repository.getStepsForDate(date) == null)
+        {
+            stepsCountForToday = 0;
+        }
+        else
+        {
+            stepsCountForToday = repository.getStepsForDate(date).getSteps();
+        }
     }
 
     @Override
@@ -50,20 +67,36 @@ public class StepsService extends Service implements SensorEventListener
     @Override
     public IBinder onBind(Intent intent)
     {
-        Bundle bundle = intent.getExtras();
-        stepCounterViewModel = bundle.getBinder();
         return null;
     }
 
     @Override
     public void onSensorChanged(SensorEvent event)
     {
-        StepCounterViewModel
+        String dateNow = checkDate();
+
+        if(date.equals(dateNow))
+        {
+            stepsCountForToday++;
+            repository.insert(new Steps(date, stepsCountForToday));
+        }
+        else
+        {
+            date = dateNow;
+            stepsCountForToday = 0;
+            repository.insert(new Steps(date, stepsCountForToday));
+        }
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy)
     {
+        //Automatically generated method
+    }
 
+    private String checkDate()
+    {
+        Calendar mCalendar = Calendar.getInstance();
+        return date = mCalendar.get(Calendar.MONTH) + "/" + mCalendar.get(Calendar.DAY_OF_MONTH) + "/" + mCalendar.get(Calendar.YEAR);
     }
 }

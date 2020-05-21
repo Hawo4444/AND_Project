@@ -2,23 +2,32 @@ package com.example.and_project.database;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
-import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class StepsRepository
 {
+    private static StepsRepository instance;
     private StepsDao stepsDao;
     private LiveData<List<Steps>> allStepsEntries;
 
-    public StepsRepository(Application application)
+    private StepsRepository(Application application)
     {
         FeednessDatabase database = FeednessDatabase.getInstance(application);
         stepsDao = database.stepsDao();
         allStepsEntries = stepsDao.getAllStepsEntries();
+    }
+
+    public static StepsRepository getInstance(Application application)
+    {
+        if(instance == null)
+        {
+            instance = new StepsRepository(application);
+        }
+        return instance;
     }
 
     public void insert(Steps steps)
@@ -33,7 +42,14 @@ public class StepsRepository
 
     public Steps getStepsForDate(String date)
     {
-        return stepsDao.getStepsForDate(date);
+        try {
+            return new GetStepsForDateAsyncTask(stepsDao).execute(date).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public LiveData<List<Steps>> getAllStepsEntries()
@@ -75,7 +91,7 @@ public class StepsRepository
         }
     }
 
-    /*private static class GetStepsForDateAsyncTask extends AsyncTask<String, Void, Steps>
+    private static class GetStepsForDateAsyncTask extends AsyncTask<String, Void, Steps>
     {
         private StepsDao stepsDao;
 
@@ -89,5 +105,5 @@ public class StepsRepository
         {
             return stepsDao.getStepsForDate(strings[0]);
         }
-    }*/
+    }
 }

@@ -13,4 +13,10 @@
         <item name="android:textColor">@color/colorDarkText</item>
         <item name="android:layout_margin">8dp</item>
     </style>
+
+    <style name="LightText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorLightText</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
 </resources>
