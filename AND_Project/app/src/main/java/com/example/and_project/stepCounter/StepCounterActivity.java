@@ -57,6 +57,8 @@ public class StepCounterActivity extends AppCompatActivity
         else
         {
             accessGoogleFit();
+            Intent mStepsIntent = new Intent(getApplicationContext(), StepsService.class);
+            startService(mStepsIntent);
         }
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
@@ -81,9 +83,6 @@ public class StepCounterActivity extends AppCompatActivity
                 mStepCounterListAdapter.setSteps(steps);
             }
         });
-
-        Intent mStepsIntent = new Intent(getApplicationContext(), StepsService.class);
-        startService(mStepsIntent);
     }
 
     @Override

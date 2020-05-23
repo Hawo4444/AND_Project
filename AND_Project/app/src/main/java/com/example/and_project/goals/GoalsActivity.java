@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.and_project.R;
 
@@ -20,5 +21,8 @@ public class GoalsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public voi
+    public void confirmGoals(View view)
+    {
+
+    }
 }

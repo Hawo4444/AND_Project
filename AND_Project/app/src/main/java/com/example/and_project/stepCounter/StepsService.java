@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.example.and_project.database.Steps;
 import com.example.and_project.database.StepsRepository;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class StepsService extends Service implements SensorEventListener
@@ -23,6 +24,7 @@ public class StepsService extends Service implements SensorEventListener
 
     private int stepsCountForToday;
     private String date;
+    SimpleDateFormat formatter;
 
     private StepsRepository repository;
 
@@ -36,7 +38,6 @@ public class StepsService extends Service implements SensorEventListener
         {
             mStepDetectorSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
             mSensorManager.registerListener(this, mStepDetectorSensor, SensorManager.SENSOR_DELAY_NORMAL);
-            System.out.println(mStepDetectorSensor);
         }
         else
         {
@@ -97,6 +98,6 @@ public class StepsService extends Service implements SensorEventListener
     private String checkDate()
     {
         Calendar mCalendar = Calendar.getInstance();
-        return date = mCalendar.get(Calendar.MONTH) + "/" + mCalendar.get(Calendar.DAY_OF_MONTH) + "/" + mCalendar.get(Calendar.YEAR);
+        return date = mCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (mCalendar.get(Calendar.MONTH) + 1) + "/" + mCalendar.get(Calendar.YEAR);
     }
 }

@@ -15,14 +15,20 @@ public class Meals
 
     private int calories;
 
-    private String mealType;
+    private int carbohydrates;
 
-    public Meals(String date, String meal, int calories, String mealType)
+    private int fats;
+
+    private int proteins;
+
+    public Meals(String date, String meal, int calories, int carbohydrates, int fats, int proteins)
     {
         this.date = date;
         this.meal = meal;
         this.calories = calories;
-        this.mealType = mealType;
+        this.carbohydrates = carbohydrates;
+        this.fats = fats;
+        this.proteins = proteins;
     }
 
     public void setId(int id)
@@ -50,8 +56,18 @@ public class Meals
         return calories;
     }
 
-    public String getMealType()
+    public int getCarbohydrates()
     {
-        return mealType;
+        return carbohydrates;
+    }
+
+    public int getFats()
+    {
+        return fats;
+    }
+
+    public int getProteins()
+    {
+        return proteins;
     }
 }
