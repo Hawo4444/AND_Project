@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.and_project.calendar.CalendarActivity;
 import com.example.and_project.goals.GoalsActivity;
@@ -138,5 +139,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void addMeal(View view)
+    {
+        Intent intent = new Intent(this, AddMealActivity.class);
+        startActivity(intent);
     }
 }

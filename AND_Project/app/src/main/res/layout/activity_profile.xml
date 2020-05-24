@@ -1,10 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".profile.ProfileActivity">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".profile.ProfileActivity"
+        android:orientation="vertical">
 
-    <include layout="@layout/toolbar" />
+        <include layout="@layout/toolbar" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <GridLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="3"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
+                style="@style/NormalText"
+                android:text="@string/current_weight" />
+
+            <EditText
+                android:id="@+id/current_weight"
+                android:layout_width="0dp"
+                android:layout_columnWeight="2"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:gravity="center"
+                style="@style/NormalText"
+                android:layout_column="1"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="2"
+                style="@style/NormalText"
+                android:text="@string/weight_unit" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="3"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="0"
+                style="@style/NormalText"
+                android:text="@string/goal_weight" />
+
+            <EditText
+                android:id="@+id/goal_weight"
+                android:layout_width="0dp"
+                android:layout_columnWeight="2"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:gravity="center"
+                style="@style/NormalText"
+                android:layout_column="1"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="2"
+                style="@style/NormalText"
+                android:text="@string/weight_unit" />
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/getStartedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:onClick="confirmGoals"
+            android:text="@string/confirm_button"
+            android:background="@drawable/bg_confirm_date_button"
+            android:textColor="@color/colorLightText" />
+    </LinearLayout>

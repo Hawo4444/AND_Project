@@ -18,7 +18,7 @@ import java.util.List;
 public class CaloriesFragmentViewModel extends AndroidViewModel
 {
     private MealsRepository repository;
-    private LiveData<List<RecyclerViewItem>> items;
+    private LiveData<List<Meals>> items;
 
     public CaloriesFragmentViewModel(@NonNull Application application)
     {
@@ -27,19 +27,17 @@ public class CaloriesFragmentViewModel extends AndroidViewModel
         items = repository.getMealsForDate("24/5/2020");
     }
 
-    public LiveData<List<RecyclerViewItem>> getAllItems()
+    public LiveData<List<Meals>> getAllItems()
     {
-        items.getValue().add(0, new Header("Meals"));
-        items.getValue().add(new AddButton());
         return items;
     }
 
-    public void addMeal(MealDetails details)
+    public void addMeal(Meals details)
     {
-        repository.insertMeal(details);
+        //repository.insertMeal(details);
     }
 
-    public void deleteMeal(MealDetails details)
+    public void deleteMeal(Meals details)
     {
         //repository.
     }

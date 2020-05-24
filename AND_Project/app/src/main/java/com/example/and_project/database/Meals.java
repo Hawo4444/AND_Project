@@ -1,18 +1,19 @@
 package com.example.and_project.database;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.and_project.main.RecyclerViewItem;
-
 @Entity
-public class Meals implements RecyclerViewItem
+public class Meals
 {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @NonNull
     private String date;
 
+    @NonNull
     private String meal;
 
     private int calories;
@@ -71,11 +72,5 @@ public class Meals implements RecyclerViewItem
     public int getProteins()
     {
         return proteins;
-    }
-
-    @Override
-    public int getType()
-    {
-        return RecyclerViewItem.TYPE_MEAL;
     }
 }

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
@@ -44,5 +46,7 @@ public class CalendarActivity extends AppCompatActivity {
         //intent to start a new activity showcasing historical data from the database
         textView.setText(pickedDate); //remove
         //System.out.println(getTimeStamp());
+        SharedPreferences prefs = this.getPreferences(Context.MODE_PRIVATE);
+        System.out.println("totok++++++" + prefs.getString("profile_name", ""));
     }
 }

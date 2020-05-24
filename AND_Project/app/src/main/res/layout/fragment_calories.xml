@@ -3,11 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.CaloriesFragment">
+    tools:context=".main.CaloriesFragment"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_meal_header"
+            android:textStyle="bold"
+            android:textColor="@color/colorDarkText"
+            android:textSize="25sp"
+            android:layout_marginStart="8dp"
+            android:text="@string/meals_today"
+            android:gravity="center_vertical"/>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/calories_rv" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="addMeal" >
+
+        <ImageView
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_add_circle_outline_black"
+            android:contentDescription="@string/add_a_meal_here" />
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

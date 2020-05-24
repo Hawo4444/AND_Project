@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.and_project.R;
 import com.example.and_project.database.Meals;
@@ -24,15 +25,11 @@ import com.example.and_project.database.Meals;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class CaloriesFragment extends Fragment implements CaloriesListAdapter.OnAddListener
+public class CaloriesFragment extends Fragment
 {
     private RecyclerView mCaloriesList;
     private CaloriesListAdapter mCaloriesListAdapter;
-    private ArrayList<RecyclerViewItem> items = new ArrayList<>();
+    private ArrayList<Meals> items = new ArrayList<>();
     private CaloriesFragmentViewModel caloriesFragmentViewModel;
 
     public CaloriesFragment()
@@ -55,7 +52,7 @@ public class CaloriesFragment extends Fragment implements CaloriesListAdapter.On
         DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(mCaloriesList.getContext(), layoutManager.getOrientation());
         mCaloriesList.addItemDecoration(mDividerItemDecoration);
 
-        mCaloriesListAdapter = new CaloriesListAdapter(items, this);
+        mCaloriesListAdapter = new CaloriesListAdapter(items);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mCaloriesList);
         mCaloriesList.setAdapter(mCaloriesListAdapter);
 
@@ -72,14 +69,6 @@ public class CaloriesFragment extends Fragment implements CaloriesListAdapter.On
         return view;
     }
 
-    @Override
-    public void onAddClick(int position)
-    {
-        items.get(position);
-        Intent intent = new Intent(getContext(), AddMealActivity.class); //to be created
-        startActivity(intent); //use position?
-    }
-
     private ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT)
     {
         @Override
@@ -91,17 +80,8 @@ public class CaloriesFragment extends Fragment implements CaloriesListAdapter.On
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
         {
-            if (viewHolder instanceof CaloriesListAdapter.MealViewHolder)
-            {
-                items.remove(viewHolder);
-                mCaloriesListAdapter.notifyDataSetChanged();
-            }
-        }
-
-        @Override
-        public int 	getSwipeDirs(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-            if (viewHolder instanceof CaloriesListAdapter.HeaderViewHolder || viewHolder instanceof CaloriesListAdapter.AddButtonViewHolder) return 0;
-            return super.getSwipeDirs(recyclerView, viewHolder);
+            items.remove(viewHolder);
+            mCaloriesListAdapter.notifyDataSetChanged();
         }
     };
 }

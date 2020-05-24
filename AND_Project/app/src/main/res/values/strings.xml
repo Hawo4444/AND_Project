@@ -25,8 +25,8 @@
     <string name="macros_tab_header">Today\'s progress:</string>
     <string name="step_counter_activity_header">Step Counter</string>
     <string name="weight_unit" translatable="false">Kg</string>
-    <string name="current_weight">Current Weight:</string>
-    <string name="goal_weight">Goal Weight:</string>
+    <string name="current_weight">Current weight:</string>
+    <string name="goal_weight">Goal weight:</string>
     <string name="add_a_meal">Type your meal</string>
     <string name="date_string">Date</string>
     <string name="steps_string">Steps</string>
@@ -36,4 +36,11 @@
     <string name="version_number">Version 0.3.1</string>
     <string name="copyright">Copyright 2020, FEEDNESS No rights reserved</string>
     <string name="about_us_activity_header">About Us</string>
+    <string name="add_a_meal_here">Add A Meal Here</string>
+    <string name="meals_today">Meals Today:</string>
+    <string name="name">Name:</string>
+    <string name="goal_calories">Goal calories:</string>
+    <string name="goal_carbs">Goal carbs:</string>
+    <string name="goal_fats">Goal fats:</string>
+    <string name="goal_proteins">Goal proteins:</string>
 </resources>

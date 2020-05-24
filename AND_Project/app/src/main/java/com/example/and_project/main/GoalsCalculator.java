@@ -1,10 +1,12 @@
 package com.example.and_project.main;
 
+import java.util.ArrayList;
+
 public class GoalsCalculator
 {
-    public static int[] calculateGoals(int currentWeight, int goalWeight)
+    public static ArrayList<Integer> calculateGoals(int currentWeight, int goalWeight)
     {
-        int[] goals = new int[3];
+        ArrayList<Integer> goals = new ArrayList<>();
         int goalCalories = getCaloriesGoal(currentWeight);
         if (goalWeight > currentWeight)
         {
@@ -14,10 +16,10 @@ public class GoalsCalculator
         {
             goalCalories-=300;
         }
-        goals[0] = goalCalories;
-        goals[1] = (int) (goalCalories*0.5/4);
-        goals[2] = (int) (goalCalories*0.3/9);
-        goals[3] = (int) (goalCalories*0.2/4);
+        goals.add(goalCalories);
+        goals.add((int) (goalCalories*0.5/4));
+        goals.add((int) (goalCalories*0.3/9));
+        goals.add((int) (goalCalories*0.2/4));
         return goals;
     }
 

@@ -4,10 +4,6 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
-import com.example.and_project.main.MealDetails;
-import com.example.and_project.main.RecyclerViewItem;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -32,7 +28,7 @@ public class MealsRepository
         return instance;
     }
 
-    public LiveData<List<RecyclerViewItem>> getMealsForDate(String date)
+    public LiveData<List<Meals>> getMealsForDate(String date)
     {
         try {
             return new GetMealsForDateAsyncTask(mealsDao).execute(date).get();
@@ -44,12 +40,12 @@ public class MealsRepository
         return null;
     }
 
-    public void insertMeal(MealDetails details)
+    public void insertMeal(Meals details)
     {
 
     }
 
-    private static class GetMealsForDateAsyncTask extends AsyncTask<String, Void, LiveData<List<RecyclerViewItem>>>
+    private static class GetMealsForDateAsyncTask extends AsyncTask<String, Void, LiveData<List<Meals>>>
     {
         private MealsDao mealsDao;
 
@@ -59,7 +55,7 @@ public class MealsRepository
         }
 
         @Override
-        protected LiveData<List<RecyclerViewItem>> doInBackground(String... strings)
+        protected LiveData<List<Meals>> doInBackground(String... strings)
         {
             return mealsDao.getAllMealsForDate(strings[0]);
         }

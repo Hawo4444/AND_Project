@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Meals.class, Steps.class}, version = 3, exportSchema = false)
+@Database(entities = {Meals.class, Steps.class, Goals.class}, version = 4, exportSchema = false)
 public abstract class FeednessDatabase extends RoomDatabase
 {
     private static FeednessDatabase INSTANCE;
@@ -14,6 +14,8 @@ public abstract class FeednessDatabase extends RoomDatabase
     public abstract MealsDao mealsDao();
 
     public abstract StepsDao stepsDao();
+
+    public abstract GoalsDao goalsDao();
 
     public static synchronized FeednessDatabase getInstance(Context context)
     {

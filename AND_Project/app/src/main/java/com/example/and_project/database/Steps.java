@@ -11,6 +11,7 @@ public class Steps
     @NonNull
     private String date;
 
+    @NonNull
     private int steps;
 
     public Steps(String date, int steps)
