@@ -64,4 +64,7 @@ dependencies {
 
     //FitnessAPI
     implementation 'com.google.android.gms:play-services-fitness:18.0.0'
+
+    //Settings
+    implementation 'androidx.preference:preference:1.1.1'
 }

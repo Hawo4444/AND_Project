@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -18,8 +19,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.and_project.R;
+import com.example.and_project.database.Meals;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -57,7 +60,14 @@ public class CaloriesFragment extends Fragment implements CaloriesListAdapter.On
         mCaloriesList.setAdapter(mCaloriesListAdapter);
 
         caloriesFragmentViewModel = new ViewModelProvider(this).get(CaloriesFragmentViewModel.class);
-        //observe data
+        caloriesFragmentViewModel.getAllItems().observe(getViewLifecycleOwner(), new Observer<List<Meals>>()
+        {
+            @Override
+            public void onChanged(List<Meals> meals)
+            {
+                mCaloriesListAdapter.setCaloriesPageList(meals);
+            }
+        });
 
         return view;
     }

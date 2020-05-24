@@ -7,21 +7,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.and_project.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-    private ArrayList<RecyclerViewItem> rvItemsList;
+    private List<? extends RecyclerViewItem> rvItemsList;
     private OnAddListener mOnAddListener;
 
     public CaloriesListAdapter(ArrayList rvItemsList, OnAddListener onAddListener)
     {
         mOnAddListener = onAddListener;
-        setCaloriesPageList(rvItemsList);
+        this.rvItemsList = rvItemsList;
     }
 
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -63,24 +65,12 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public int getItemCount()
     {
-        if (rvItemsList == null)
-        {
-            return 0;
-        }
-        else
-            {
-            return rvItemsList.size();
-        }
+        return rvItemsList.size();
     }
 
-    public void setCaloriesPageList(ArrayList<? extends RecyclerViewItem> caloriesList)
+    public void setCaloriesPageList(List<? extends RecyclerViewItem> caloriesList)
     {
-        if (rvItemsList == null)
-        {
-            rvItemsList = new ArrayList<>();
-        }
-        rvItemsList.clear();
-        rvItemsList.addAll(caloriesList);
+        rvItemsList = caloriesList;
         notifyDataSetChanged();
     }
 

@@ -11,6 +11,8 @@ import android.widget.TextView; // remove
 
 import com.example.and_project.R;
 
+//import static com.example.and_project.domain.Calendar.getTimeStamp;
+
 public class CalendarActivity extends AppCompatActivity {
 
     CalendarView mCalendarView;
@@ -32,7 +34,7 @@ public class CalendarActivity extends AppCompatActivity {
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                pickedDate = dayOfMonth + "/" + month + "/" + year;
+                pickedDate = dayOfMonth + "/" + month + "/" + year; //month +1
             }
         });
     }
@@ -41,5 +43,6 @@ public class CalendarActivity extends AppCompatActivity {
     {
         //intent to start a new activity showcasing historical data from the database
         textView.setText(pickedDate); //remove
+        //System.out.println(getTimeStamp());
     }
 }

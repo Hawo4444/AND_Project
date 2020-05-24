@@ -3,8 +3,10 @@ package com.example.and_project.database;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.and_project.main.RecyclerViewItem;
+
 @Entity
-public class Meals
+public class Meals implements RecyclerViewItem
 {
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -69,5 +71,11 @@ public class Meals
     public int getProteins()
     {
         return proteins;
+    }
+
+    @Override
+    public int getType()
+    {
+        return RecyclerViewItem.TYPE_MEAL;
     }
 }

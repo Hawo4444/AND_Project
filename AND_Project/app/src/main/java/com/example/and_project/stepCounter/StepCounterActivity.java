@@ -79,7 +79,6 @@ public class StepCounterActivity extends AppCompatActivity
             @Override
             public void onChanged(List<Steps> steps)
             {
-                System.out.println("data changed");
                 mStepCounterListAdapter.setSteps(steps);
             }
         });

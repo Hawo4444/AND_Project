@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.and_project">
 
-    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,31 +14,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".main.AddMealActivity"
-            android:parentActivityName=".main.MainActivity">
-        </activity>
-
-        <activity android:name=".settings.SettingsActivity"
-            android:parentActivityName=".main.MainActivity">
-        </activity>
-
-        <activity android:name=".stepCounter.StepCounterActivity"
-            android:parentActivityName=".main.MainActivity">
-        </activity>
-
-        <activity android:name=".calendar.CalendarActivity"
-            android:parentActivityName=".main.MainActivity">
-        </activity>
-
-        <activity android:name=".goals.GoalsActivity"
-            android:parentActivityName=".main.MainActivity">
-        </activity>
-
-        <activity android:name=".profile.ProfileActivity"
-            android:parentActivityName=".main.MainActivity">
-        </activity>
-
+        <activity android:name=".calendar.HistoricalDataActivity"></activity>
+        <activity
+            android:name=".settings.AboutUsActivity"
+            android:parentActivityName=".settings.SettingsActivity"></activity>
+        <activity
+            android:name=".main.AddMealActivity"
+            android:parentActivityName=".main.MainActivity"></activity>
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:parentActivityName=".main.MainActivity"></activity>
+        <activity
+            android:name=".stepCounter.StepCounterActivity"
+            android:parentActivityName=".main.MainActivity"></activity>
+        <activity
+            android:name=".calendar.CalendarActivity"
+            android:parentActivityName=".main.MainActivity"></activity>
+        <activity
+            android:name=".goals.GoalsActivity"
+            android:parentActivityName=".main.MainActivity"></activity>
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:parentActivityName=".main.MainActivity"></activity>
         <activity android:name=".login.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -46,7 +43,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,7 +51,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".stepCounter.StepsService"
+        <service
+            android:name=".stepCounter.StepsService"
             android:foregroundServiceType="" />
     </application>
 
