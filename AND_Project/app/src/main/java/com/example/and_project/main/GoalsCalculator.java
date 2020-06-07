@@ -1,12 +1,11 @@
 package com.example.and_project.main;
 
-import java.util.ArrayList;
+import com.example.and_project.database.Goals;
 
 public class GoalsCalculator
 {
-    public static ArrayList<Integer> calculateGoals(int currentWeight, int goalWeight)
+    public static Goals calculateGoals(int currentWeight, int goalWeight)
     {
-        ArrayList<Integer> goals = new ArrayList<>();
         int goalCalories = getCaloriesGoal(currentWeight);
         if (goalWeight > currentWeight)
         {
@@ -16,11 +15,10 @@ public class GoalsCalculator
         {
             goalCalories-=300;
         }
-        goals.add(goalCalories);
-        goals.add((int) (goalCalories*0.5/4));
-        goals.add((int) (goalCalories*0.3/9));
-        goals.add((int) (goalCalories*0.2/4));
-        return goals;
+        int goalCarbs = ((int) (goalCalories*0.5/4));
+        int goalFats = ((int) (goalCalories*0.3/9));
+        int goalProtein = ((int) (goalCalories*0.2/4));
+        return new Goals(1, goalWeight, goalCalories, goalCarbs, goalFats, goalProtein); //id is 1 because only one set of goals needs to be stored in the database at a time
     }
 
     private static int getCaloriesGoal(int currentWeight)

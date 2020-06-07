@@ -23,6 +23,8 @@ import com.example.and_project.main.MainActivity;
 
 import java.util.List;
 
+import static com.example.and_project.main.GoalsCalculator.calculateGoals;
+
 public class ProfileActivity extends AppCompatActivity
 {
     private EditText currentWeight;
@@ -48,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity
 
     public void confirmGoals(View view)
     {
-        repository.insert(new Goals(1, Integer.parseInt(currentWeight.getText().toString()), Integer.parseInt(goalWeight.getText().toString())));
+        repository.insert(calculateGoals(Integer.parseInt(currentWeight.getText().toString()), Integer.parseInt(goalWeight.getText().toString())));
         Toast.makeText(this, "Goals confirmed!", Toast.LENGTH_SHORT).show();
     }
 }

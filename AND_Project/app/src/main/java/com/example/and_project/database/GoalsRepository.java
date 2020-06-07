@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 public class GoalsRepository
 {
@@ -53,20 +54,4 @@ public class GoalsRepository
             return null;
         }
     }
-
-    /*private static class GetStepsForDateAsyncTask extends AsyncTask<String, Void, Steps>
-    {
-        private StepsDao stepsDao;
-
-        private GetStepsForDateAsyncTask(StepsDao stepsDao)
-        {
-            this.stepsDao = stepsDao;
-        }
-
-        @Override
-        protected Steps doInBackground(String... strings)
-        {
-            return stepsDao.getStepsForDate(strings[0]);
-        }
-    }*/
 }

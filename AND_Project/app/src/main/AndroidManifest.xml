@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".calendar.HistoricalDataActivity"></activity>
+        <activity android:name=".calendar.HistoricalDataActivity"
+            android:parentActivityName=".calendar.CalendarActivity">
+        </activity>
         <activity
             android:name=".settings.AboutUsActivity"
             android:parentActivityName=".settings.SettingsActivity"></activity>

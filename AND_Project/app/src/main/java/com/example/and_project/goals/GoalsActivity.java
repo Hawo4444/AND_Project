@@ -10,16 +10,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.and_project.R;
-
-import java.util.ArrayList;
+import com.example.and_project.database.Goals;
 
 public class GoalsActivity extends AppCompatActivity
 {
     private GoalsViewModel goalsViewModel;
 
     private TextView goalWeight;
+    private TextView goalCalories;
+    private TextView goalCarbs;
+    private TextView goalFats;
+    private TextView goalProteins;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +36,25 @@ public class GoalsActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         goalWeight = findViewById(R.id.goal_weight_goals);
+        goalCalories = findViewById(R.id.goal_calories_goals);
+        goalCarbs = findViewById(R.id.goal_carbs_goals);
+        goalFats = findViewById(R.id.goal_fats_goals);
+        goalProteins = findViewById(R.id.goal_proteins_goals);
 
         goalsViewModel = new ViewModelProvider(this).get(GoalsViewModel.class);
-        goalsViewModel.getGoals().observe(this, new Observer<ArrayList<Integer>>() {
+        goalsViewModel.getGoals().observe(this, new Observer<Goals>()
+        {
             @Override
-            public void onChanged(ArrayList<Integer> integers)
+            public void onChanged(Goals goals)
             {
-                goalWeight.setText(integers.get(0).toString());
+                if(goals != null) {
+                    goalWeight.setText(String.valueOf(goals.getGoalWeight()));
+                    goalCalories.setText(String.valueOf(goals.getGoalCalories()));
+                    goalCarbs.setText(String.valueOf(goals.getGoalCarbs()));
+                    goalFats.setText(String.valueOf(goals.getGoalFats()));
+                    goalProteins.setText(String.valueOf(goals.getGoalProtein()));
+                }
+                Toast.makeText(getApplication(), "No goals set yet!", Toast.LENGTH_LONG).show();
             }
         });
     }
