@@ -27,7 +27,7 @@
     <string name="weight_unit" translatable="false">Kg</string>
     <string name="current_weight">Current weight:</string>
     <string name="goal_weight">Goal weight:</string>
-    <string name="add_a_meal">Type a meal</string>
+    <string name="add_a_meal">Type a meal along with its amount</string>
     <string name="date_string">Date</string>
     <string name="steps_string">Steps</string>
     <string name="general">General</string>
