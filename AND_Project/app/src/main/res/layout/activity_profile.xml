@@ -19,7 +19,8 @@
                 android:layout_row="0"
                 android:layout_column="0"
                 style="@style/NormalText"
-                android:text="@string/current_weight" />
+                android:text="@string/current_weight"
+                android:paddingStart="8dp" />
 
             <EditText
                 android:id="@+id/current_weight"
@@ -48,7 +49,8 @@
                 android:layout_row="1"
                 android:layout_column="0"
                 style="@style/NormalText"
-                android:text="@string/goal_weight" />
+                android:text="@string/goal_weight"
+                android:paddingStart="8dp" />
 
             <EditText
                 android:id="@+id/goal_weight"

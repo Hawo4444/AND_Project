@@ -12,7 +12,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:orientation="vertical"
-            android:layout_marginStart="4dp">
+            android:paddingStart="8dp">
 
             <TextView
                 android:id="@+id/rv_meal_name"
@@ -29,7 +29,6 @@
                 android:layout_weight="2"
                 android:textSize="12sp"
                 android:textColor="@color/colorGreyText"
-
                 android:layout_margin=".5dp" />
 
         </LinearLayout>
@@ -40,7 +39,8 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             style="@style/NormalText"
-            android:textAlignment="viewEnd"/>
+            android:textAlignment="viewEnd"
+            android:paddingEnd="8dp"/>
 
     </LinearLayout>
 

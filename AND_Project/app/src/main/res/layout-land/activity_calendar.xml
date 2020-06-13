@@ -26,10 +26,9 @@
         <CalendarView
             android:id="@+id/calendar_view"
             android:layout_width="0dp"
-            android:layout_weight="4"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="40dp"
+            android:layout_margin="8dp"
+            android:layout_weight="4"
             android:background="@drawable/bg_calendar" />
 
         <FrameLayout
@@ -47,12 +46,6 @@
                 android:textColor="@color/colorLightText" />
 
         </FrameLayout>
-
-        <TextView
-            android:id="@+id/text_view_test_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
     </LinearLayout>
 

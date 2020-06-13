@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.and_project.database.Goals;
+import com.example.and_project.database.GoalsRepository;
 import com.example.and_project.database.MealsRepository;
 import com.example.and_project.domain.Meals;
 
@@ -15,16 +17,20 @@ import java.util.List;
 
 public class SharedViewModel extends AndroidViewModel
 {
-    private MealsRepository repository;
+    private MealsRepository mealsRepository;
+    private GoalsRepository goalsRepository;
     private LiveData<List<Meals>> items;
+    private LiveData<Goals> goals;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public SharedViewModel(@NonNull Application application)
     {
         super(application);
-        repository = MealsRepository.getInstance(getApplication());
+        mealsRepository = MealsRepository.getInstance(getApplication());
+        goalsRepository = GoalsRepository.getInstance(getApplication());
 
-        items = repository.getMealsForDate(getCurrentDate());
+        items = mealsRepository.getMealsForDate(getCurrentDate());
+        goals = goalsRepository.getGoals();
     }
 
     private String getCurrentDate()
@@ -40,6 +46,11 @@ public class SharedViewModel extends AndroidViewModel
 
     public void deleteMeal(Meals meal)
     {
-        repository.deleteMeal(meal);
+        mealsRepository.deleteMeal(meal);
+    }
+
+    public LiveData<Goals> getGoals()
+    {
+        return goals;
     }
 }

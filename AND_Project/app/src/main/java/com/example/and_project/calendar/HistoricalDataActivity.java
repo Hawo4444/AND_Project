@@ -27,10 +27,10 @@ public class HistoricalDataActivity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.step_counter_activity_header);
+        getSupportActionBar().setTitle(R.string.historical_data_activity_header);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mMealsList = findViewById(R.id.steps_list);
+        mMealsList = findViewById(R.id.historical_data_list);
         mMealsList.hasFixedSize();
         mMealsList.setLayoutManager(new LinearLayoutManager(this));
 

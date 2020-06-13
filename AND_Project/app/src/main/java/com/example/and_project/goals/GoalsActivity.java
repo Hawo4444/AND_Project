@@ -49,11 +49,11 @@ public class GoalsActivity extends AppCompatActivity
             {
                 if (goals != null)
                 {
-                    goalWeight.setText(String.valueOf(goals.getGoalWeight()));
-                    goalCalories.setText(String.valueOf(goals.getGoalCalories()));
-                    goalCarbs.setText(String.valueOf(goals.getGoalCarbs()));
-                    goalFats.setText(String.valueOf(goals.getGoalFats()));
-                    goalProteins.setText(String.valueOf(goals.getGoalProtein()));
+                    goalWeight.setText(getString(R.string.weight_unit_goal, goals.getGoalWeight()));
+                    goalCalories.setText(getString(R.string.calories_unit_goal, goals.getGoalCalories()));
+                    goalCarbs.setText(getString(R.string.macros_unit_goal, goals.getGoalCarbs()));
+                    goalFats.setText(getString(R.string.macros_unit_goal, goals.getGoalFats()));
+                    goalProteins.setText(getString(R.string.macros_unit_goal, goals.getGoalProtein()));
                 }
                 else
                 {

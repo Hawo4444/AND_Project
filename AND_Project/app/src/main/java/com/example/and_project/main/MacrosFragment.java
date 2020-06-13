@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.and_project.R;
+import com.example.and_project.database.Goals;
 import com.example.and_project.domain.Meals;
 
 import java.util.List;
@@ -25,6 +26,11 @@ public class MacrosFragment extends Fragment
     TextView carbs;
     TextView fats;
     TextView proteins;
+
+    TextView caloriesAmount;
+    TextView carbsAmount;
+    TextView fatsAmount;
+    TextView proteinsAmount;
 
     public MacrosFragment()
     {
@@ -42,6 +48,11 @@ public class MacrosFragment extends Fragment
         fats = view.findViewById(R.id.fat_macro);
         proteins = view.findViewById(R.id.protein_macro);
 
+        caloriesAmount = view.findViewById(R.id.calories_amount);
+        carbsAmount = view.findViewById(R.id.carb_macro_amount);
+        fatsAmount = view.findViewById(R.id.fat_macro_amount);
+        proteinsAmount = view.findViewById(R.id.protein_macro_amount);
+
         return view;
     }
 
@@ -52,26 +63,48 @@ public class MacrosFragment extends Fragment
         sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         sharedViewModel.getAllItems().observe(getViewLifecycleOwner(), new Observer<List<Meals>>()
         {
-            int caloriesAmount, carbsAmount, fatsAmount, proteinsAmount = 0;
+            int caloriesVar, carbsVar, fatsVar, proteinsVar = 0;
             @Override
             public void onChanged(List<Meals> meals)
             {
-                caloriesAmount = 0;
-                carbsAmount = 0;
-                fatsAmount = 0;
-                proteinsAmount = 0;
+                caloriesVar = 0;
+                carbsVar = 0;
+                fatsVar = 0;
+                proteinsVar = 0;
                 for(int i = 0; i < meals.size(); i++)
                 {
                     Meals meal = meals.get(i);
-                    caloriesAmount += meal.calories;
-                    carbsAmount += meal.carbohydrate;
-                    fatsAmount += meal.fat;
-                    proteinsAmount += meal.protein;
+                    caloriesVar += meal.calories;
+                    carbsVar += meal.carbohydrate;
+                    fatsVar += meal.fat;
+                    proteinsVar += meal.protein;
                 }
-                calories.setText(String.valueOf(caloriesAmount));
-                carbs.setText(String.valueOf(carbsAmount));
-                fats.setText(String.valueOf(fatsAmount));
-                proteins.setText(String.valueOf(proteinsAmount));
+                calories.setText(String.valueOf(caloriesVar));
+                carbs.setText(String.valueOf(carbsVar));
+                fats.setText(String.valueOf(fatsVar));
+                proteins.setText(String.valueOf(proteinsVar));
+            }
+        });
+
+        sharedViewModel.getGoals().observe(getViewLifecycleOwner(), new Observer<Goals>()
+        {
+            @Override
+            public void onChanged(Goals goals)
+            {
+                if (goals != null)
+                {
+                    caloriesAmount.setText(getString(R.string.dash_calories, goals.getGoalCalories()));
+                    carbsAmount.setText(getString(R.string.dash_macros, goals.getGoalCarbs()));
+                    fatsAmount.setText(getString(R.string.dash_macros, goals.getGoalFats()));
+                    proteinsAmount.setText(getString(R.string.dash_macros, goals.getGoalProtein()));
+                }
+                else
+                {
+                    caloriesAmount.setText(R.string.empty_calories);
+                    carbsAmount.setText(R.string.empty_macros);
+                    fatsAmount.setText(R.string.empty_macros);
+                    proteinsAmount.setText(R.string.empty_macros);
+                }
             }
         });
     }

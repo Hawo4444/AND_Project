@@ -24,9 +24,10 @@
     <string name="protein_macro">Proteins:</string>
     <string name="macros_tab_header">Today\'s Progress:</string>
     <string name="step_counter_activity_header">Step Counter</string>
-    <string name="weight_unit" translatable="false">Kg</string>
+    <string name="weight_unit" translatable="false">kg</string>
+    <string name="weight_unit_goal" translatable="false">%1$dkg</string>
     <string name="current_weight">Current weight:</string>
-    <string name="goal_weight">Goal weight:</string>
+    <string name="goal_weight">Goal Weight:</string>
     <string name="add_a_meal">Type a Meal Along with Its Amount</string>
     <string name="date_string">Date</string>
     <string name="steps_string">Steps</string>
@@ -48,4 +49,11 @@
     <string name="add_an_amount">Amount</string>
     <string name="add_meal_error">Invalid Entry, Please Try Again</string>
     <string name="calories">Calories:</string>
+    <string name="empty_calories">0 kcal</string>
+    <string name="empty_macros">0g</string>
+    <string name="dash_calories">/%1$d kcal</string>
+    <string name="dash_macros">/%1$dg</string>
+    <string name="calories_unit_goal">%1$d kcal</string>
+    <string name="macros_unit_goal">%1$dg</string>
+    <string name="historical_data_activity_header">Historical Data</string>
 </resources>
