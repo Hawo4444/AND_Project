@@ -18,7 +18,6 @@ public class Meals
     @NonNull
     private String meal;
 
-    //@SerializedName("150")
     private int calories;
 
     private int carbohydrates;

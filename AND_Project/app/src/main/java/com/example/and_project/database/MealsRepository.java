@@ -78,7 +78,7 @@ public class MealsRepository
         apiEndpoint = ServiceGenerator.getApiEndpoint();
         try
         {
-            return new getMealInfoAsyncTask(apiEndpoint).execute((new ApiBody("query", foodName))).get();
+            return new getMealInfoAsyncTask(apiEndpoint).execute((new ApiBody(foodName))).get();
         }
         catch (ExecutionException | InterruptedException e)
         {

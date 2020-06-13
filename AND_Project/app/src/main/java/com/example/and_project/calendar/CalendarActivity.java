@@ -50,7 +50,7 @@ public class CalendarActivity extends AppCompatActivity {
         //intent to start a new activity showcasing historical data from the database
         textView.setText(pickedDate); //remove
         //System.out.println(getTimeStamp());
-        Intent intent = new Intent(this, AddMealActivity.class); //put extras - date
+        Intent intent = new Intent(this, HistoricalDataActivity.class); //put extras - date
         startActivity(intent);
     }
 }

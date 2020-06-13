@@ -46,4 +46,5 @@
     <string name="calories_unit">kcal</string>
     <string name="macros_unit">g</string>
     <string name="add_an_amount">Amount</string>
+    <string name="add_meal_error">Invalid Entry, Please Try Again</string>
 </resources>

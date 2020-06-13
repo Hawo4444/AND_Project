@@ -47,14 +47,18 @@ public class GoalsActivity extends AppCompatActivity
             @Override
             public void onChanged(Goals goals)
             {
-                if(goals != null) {
+                if (goals != null)
+                {
                     goalWeight.setText(String.valueOf(goals.getGoalWeight()));
                     goalCalories.setText(String.valueOf(goals.getGoalCalories()));
                     goalCarbs.setText(String.valueOf(goals.getGoalCarbs()));
                     goalFats.setText(String.valueOf(goals.getGoalFats()));
                     goalProteins.setText(String.valueOf(goals.getGoalProtein()));
                 }
-                Toast.makeText(getApplication(), "No goals set yet!", Toast.LENGTH_LONG).show();
+                else
+                {
+                    Toast.makeText(getApplication(), "No goals set yet!", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

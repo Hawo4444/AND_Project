@@ -3,6 +3,7 @@ package com.example.and_project.main;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import com.example.and_project.database.MealsRepository;
 public class AddMealActivity extends AppCompatActivity
 {
     EditText editText;
+    TextView errorText;
     private MealsRepository repository;
 
     @Override
@@ -29,10 +31,22 @@ public class AddMealActivity extends AppCompatActivity
 
         repository = MealsRepository.getInstance(getApplication());
         editText = findViewById(R.id.new_meal_name);
+        errorText = findViewById(R.id.error_text);
     }
 
     public void confirmMeal(View view)
     {
-        repository.getInformationFromAPI(editText.getText().toString());
+        FoodInformationFromAPI food = repository.getInformationFromAPI(editText.getText().toString());
+        if(food == null)
+        {
+            errorText.setText(R.string.add_meal_error);
+        }
+        else
+        {
+            errorText.setText("");
+            repository.insertMeal(food);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 }

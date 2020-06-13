@@ -18,8 +18,11 @@ public class FoodInformationFromAPI
     public double carbohydrate;
     @SerializedName("nf_total_protein")
     public double protein;
+    @SerializedName("consumed_at")
+    public String date;
 
-    public FoodInformationFromAPI(String foodName, double servingQuantity, String servingUnit, double calories, double fat, double carbohydrate, double protein)
+
+    public FoodInformationFromAPI(String foodName, double servingQuantity, String servingUnit, double calories, double fat, double carbohydrate, double protein, String date)
     {
         this.foodName = foodName;
         this.servingQuantity = servingQuantity;
@@ -28,5 +31,6 @@ public class FoodInformationFromAPI
         this.fat = fat;
         this.carbohydrate = carbohydrate;
         this.protein = protein;
+        this.date = date;
     }
 }

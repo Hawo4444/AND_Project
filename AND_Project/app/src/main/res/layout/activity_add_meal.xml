@@ -34,4 +34,12 @@
         android:background="@drawable/bg_confirm_date_button"
         android:textColor="@color/colorLightText" />
 
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorSecondary"
+        android:layout_marginTop="4dp"
+        android:textAlignment="center"/>
+
 </LinearLayout>
