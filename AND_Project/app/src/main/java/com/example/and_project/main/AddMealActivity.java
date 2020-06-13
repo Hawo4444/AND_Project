@@ -5,19 +5,27 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.and_project.R;
-import com.example.and_project.api.FoodInformationFromAPI;
+import com.example.and_project.domain.Meals;
 import com.example.and_project.database.MealsRepository;
+import com.example.and_project.domain.MealsList;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
 
 public class AddMealActivity extends AppCompatActivity
 {
     EditText editText;
     TextView errorText;
     private MealsRepository repository;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +44,33 @@ public class AddMealActivity extends AppCompatActivity
 
     public void confirmMeal(View view)
     {
-        FoodInformationFromAPI food = repository.getInformationFromAPI(editText.getText().toString());
-        if(food == null)
+        MealsList mealsList = repository.getInformationFromAPI(editText.getText().toString());
+        try
+        {
+            Meals meal = mealsList.getMeal(0);
+
+            if(meal == null)
+            {
+                errorText.setText(R.string.add_meal_error);
+            }
+            else
+            {
+                Calendar cal = Calendar.getInstance();
+                String date = sdf.format(cal.getTime());
+                meal.setDate(date);
+                System.out.println("+++++++++++++++++++++" + meal.getDate());
+                System.out.println("+++++++++++++++++++++" + meal.getFoodName());
+                errorText.setText("");
+                repository.insertMeal(meal);
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
+        }
+        catch (Exception e)
         {
             errorText.setText(R.string.add_meal_error);
+            e.printStackTrace();
         }
-        else
-        {
-            errorText.setText("");
-            repository.insertMeal(food);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+
     }
 }

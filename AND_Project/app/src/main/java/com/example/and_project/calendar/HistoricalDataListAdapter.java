@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.and_project.R;
-import com.example.and_project.database.Meals;
+import com.example.and_project.domain.Meals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class HistoricalDataListAdapter extends RecyclerView.Adapter<HistoricalDa
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position)
     {
-        holder.meal.setText(rvMealsList.get(position).getMeal());
+        holder.meal.setText(rvMealsList.get(position).getFoodName());
         holder.calories.setText(String.valueOf(rvMealsList.get(position).getCalories()));
     }
 

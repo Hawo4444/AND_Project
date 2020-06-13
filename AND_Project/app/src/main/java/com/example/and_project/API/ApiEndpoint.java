@@ -1,6 +1,7 @@
 package com.example.and_project.api;
 
 import com.example.and_project.domain.ApiBody;
+import com.example.and_project.domain.MealsList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -17,5 +18,5 @@ public interface ApiEndpoint
 
     @POST("v2/natural/nutrients")
     @Headers({CONTENT_TYPE, APPLICATION_ID, APPLICATION_KEY})
-    Call<FoodInformationFromAPI> getFoodInformation(@Body ApiBody apiBody);
+    Call<MealsList> getFoodInformation(@Body ApiBody apiBody);
 }

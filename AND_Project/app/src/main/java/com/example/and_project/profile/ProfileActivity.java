@@ -50,7 +50,18 @@ public class ProfileActivity extends AppCompatActivity
 
     public void confirmGoals(View view)
     {
-        repository.insert(calculateGoals(Integer.parseInt(currentWeight.getText().toString()), Integer.parseInt(goalWeight.getText().toString())));
-        Toast.makeText(this, "Goals confirmed!", Toast.LENGTH_SHORT).show();
+        if(currentWeight.getText().toString().trim().equals(""))
+        {
+            currentWeight.setError("The Current Weight Field Cannot Be Empty");
+        }
+        else if(goalWeight.getText().toString().trim().equals(""))
+        {
+            goalWeight.setError("The Goal Weight Field Cannot Be Empty");
+        }
+        else
+        {
+            repository.insert(calculateGoals(Integer.parseInt(currentWeight.getText().toString()), Integer.parseInt(goalWeight.getText().toString())));
+            Toast.makeText(this, "Goals confirmed!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

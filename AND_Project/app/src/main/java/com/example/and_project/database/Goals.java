@@ -29,7 +29,8 @@ public class Goals
         this.goalProtein = goalProtein;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 

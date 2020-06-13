@@ -6,7 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Meals.class, Steps.class, Goals.class}, version = 7, exportSchema = false)
+import com.example.and_project.domain.Meals;
+
+@Database(entities = {Meals.class, Steps.class, Goals.class}, version = 12, exportSchema = false)
 public abstract class FeednessDatabase extends RoomDatabase
 {
     private static FeednessDatabase INSTANCE;

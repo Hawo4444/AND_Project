@@ -1,14 +1,13 @@
 package com.example.and_project.main;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,10 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.and_project.R;
-import com.example.and_project.database.Meals;
+import com.example.and_project.domain.Meals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,7 @@ public class CaloriesFragment extends Fragment
     private RecyclerView mCaloriesList;
     private CaloriesListAdapter mCaloriesListAdapter;
     private ArrayList<Meals> items = new ArrayList<>();
-    private CaloriesFragmentViewModel caloriesFragmentViewModel;
+    private SharedViewModel sharedViewModel;
 
     public CaloriesFragment()
     {
@@ -56,8 +55,15 @@ public class CaloriesFragment extends Fragment
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mCaloriesList);
         mCaloriesList.setAdapter(mCaloriesListAdapter);
 
-        caloriesFragmentViewModel = new ViewModelProvider(this).get(CaloriesFragmentViewModel.class);
-        caloriesFragmentViewModel.getAllItems().observe(getViewLifecycleOwner(), new Observer<List<Meals>>()
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+        sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+        sharedViewModel.getAllItems().observe(getViewLifecycleOwner(), new Observer<List<Meals>>()
         {
             @Override
             public void onChanged(List<Meals> meals)
@@ -65,8 +71,6 @@ public class CaloriesFragment extends Fragment
                 mCaloriesListAdapter.setCaloriesPageList(meals);
             }
         });
-
-        return view;
     }
 
     private ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT)
@@ -80,7 +84,8 @@ public class CaloriesFragment extends Fragment
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
         {
-            items.remove(viewHolder);
+            sharedViewModel.deleteMeal(mCaloriesListAdapter.getMealAt(viewHolder.getAdapterPosition()));
+            Toast.makeText(getContext(), "Meal Deleted", Toast.LENGTH_SHORT).show();
             mCaloriesListAdapter.notifyDataSetChanged();
         }
     };

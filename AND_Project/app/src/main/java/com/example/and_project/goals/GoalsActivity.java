@@ -57,7 +57,7 @@ public class GoalsActivity extends AppCompatActivity
                 }
                 else
                 {
-                    Toast.makeText(getApplication(), "No goals set yet!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplication(), "No goals set yet!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

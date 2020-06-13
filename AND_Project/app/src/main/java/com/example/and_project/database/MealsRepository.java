@@ -7,10 +7,10 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.example.and_project.api.ApiEndpoint;
-import com.example.and_project.api.FoodInformationFromAPI;
+import com.example.and_project.domain.Meals;
 import com.example.and_project.api.ServiceGenerator;
 import com.example.and_project.domain.ApiBody;
-import com.google.gson.Gson;
+import com.example.and_project.domain.MealsList;
 
 import java.io.IOException;
 import java.util.List;
@@ -52,9 +52,48 @@ public class MealsRepository
         return null;
     }
 
-    public void insertMeal(Meals details)
+    public void insertMeal(Meals meal)
     {
+        new InsertMealsAsyncTask(mealsDao).execute(meal);
+    }
 
+    private static class InsertMealsAsyncTask extends AsyncTask<Meals, Void, Void>
+    {
+        private MealsDao mealsDao;
+
+        private InsertMealsAsyncTask(MealsDao mealsDao)
+        {
+            this.mealsDao = mealsDao;
+        }
+
+        @Override
+        protected Void doInBackground(Meals... meals)
+        {
+            mealsDao.insert(meals[0]);
+            return null;
+        }
+    }
+
+    public void deleteMeal(Meals meal)
+    {
+        new DeleteMealsAsyncTask(mealsDao).execute(meal);
+    }
+
+    private static class DeleteMealsAsyncTask extends AsyncTask<Meals, Void, Void>
+    {
+        private MealsDao mealsDao;
+
+        private DeleteMealsAsyncTask(MealsDao mealsDao)
+        {
+            this.mealsDao = mealsDao;
+        }
+
+        @Override
+        protected Void doInBackground(Meals... meals)
+        {
+            mealsDao.delete(meals[0]);
+            return null;
+        }
     }
 
     private static class GetMealsForDateAsyncTask extends AsyncTask<String, Void, LiveData<List<Meals>>>
@@ -73,7 +112,7 @@ public class MealsRepository
         }
     }
 
-    public FoodInformationFromAPI getInformationFromAPI(String foodName)
+    public MealsList getInformationFromAPI(String foodName)
     {
         apiEndpoint = ServiceGenerator.getApiEndpoint();
         try
@@ -87,7 +126,7 @@ public class MealsRepository
         }
     }
 
-    public class getMealInfoAsyncTask extends AsyncTask<ApiBody,Void,FoodInformationFromAPI>
+    public static class getMealInfoAsyncTask extends AsyncTask<ApiBody,Void,MealsList>
     {
         private ApiEndpoint asyncTaskApi;
 
@@ -97,13 +136,10 @@ public class MealsRepository
         }
 
         @Override
-        protected FoodInformationFromAPI doInBackground(ApiBody... apiBodies)
+        protected MealsList doInBackground(ApiBody... apiBodies)
         {
-            Call<FoodInformationFromAPI> call = asyncTaskApi.getFoodInformation(apiBodies[0]);
-            Log.i("REQUEST URL",call.request().url().toString());
-            Log.i("REQUEST BODY",String.valueOf(call.request().body()));
-            Log.i("REQUEST BODY",String.valueOf(call.request().headers().toString()));
-            Response<FoodInformationFromAPI> response;
+            Call<MealsList> call = asyncTaskApi.getFoodInformation(apiBodies[0]);
+            Response<MealsList> response;
             try
             {
                 response = call.execute();
@@ -113,10 +149,6 @@ public class MealsRepository
                 e.printStackTrace();
                 return null;
             }
-            Log.i("RESPONSE STATUS CODE",String.valueOf(response.code()));
-            Log.i("RESPONSE BODY",String.valueOf(response.raw().body().toString()));
-            Log.i("RESPONSE REQUEST",String.valueOf(response.raw().request().toString()));
-
             return response.body();
         }
     }

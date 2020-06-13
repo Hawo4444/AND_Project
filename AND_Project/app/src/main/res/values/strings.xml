@@ -5,14 +5,14 @@
     <string name="facebook_login_protocol_scheme" translatable="false">fb239138860634073</string>
 
     <string name="get_started_button">Get Started!</string>
-    <string name="welcome_string">A simple way to keep track of your calories</string>
+    <string name="welcome_string">A Simple Way to Keep Track of Your Calories</string>
     <string name="drawer_name">Name</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Closed</string>
 
     <string name="calories_tab">Calories</string>
     <string name="macros_tab">Macros</string>
-    <string name="pick_date_string">Pick a date to show nutritional data</string>
+    <string name="pick_date_string">Pick a Date to Show Nutritional Data</string>
     <string name="confirm_button">Confirm</string>
     <string name="goals_activity_header">Goals</string>
     <string name="calendar_activity_header">Calendar</string>
@@ -22,29 +22,30 @@
     <string name="carb_macro">Carbohydrates:</string>
     <string name="fat_macro">Fats:</string>
     <string name="protein_macro">Proteins:</string>
-    <string name="macros_tab_header">Today\'s progress:</string>
+    <string name="macros_tab_header">Today\'s Progress:</string>
     <string name="step_counter_activity_header">Step Counter</string>
     <string name="weight_unit" translatable="false">Kg</string>
     <string name="current_weight">Current weight:</string>
     <string name="goal_weight">Goal weight:</string>
-    <string name="add_a_meal">Type a meal along with its amount</string>
+    <string name="add_a_meal">Type a Meal Along with Its Amount</string>
     <string name="date_string">Date</string>
     <string name="steps_string">Steps</string>
     <string name="general">General</string>
     <string name="about_us">About Us</string>
     <string name="help">Help</string>
     <string name="version_number">Version 0.3.1</string>
-    <string name="copyright">Copyright 2020, FEEDNESS No rights reserved</string>
+    <string name="copyright">Copyright 2020, FEEDNESS No Rights Reserved</string>
     <string name="about_us_activity_header">About Us</string>
     <string name="add_a_meal_here">Add A Meal Here</string>
     <string name="meals_today">Meals Today:</string>
     <string name="name">Name:</string>
-    <string name="goal_calories">Goal calories:</string>
-    <string name="goal_carbs">Goal carbs:</string>
-    <string name="goal_fats">Goal fats:</string>
-    <string name="goal_proteins">Goal proteins:</string>
+    <string name="goal_calories">Goal Calories:</string>
+    <string name="goal_carbs">Goal Carbs:</string>
+    <string name="goal_fats">Goal Fats:</string>
+    <string name="goal_proteins">Goal Proteins:</string>
     <string name="calories_unit">kcal</string>
     <string name="macros_unit">g</string>
     <string name="add_an_amount">Amount</string>
     <string name="add_meal_error">Invalid Entry, Please Try Again</string>
+    <string name="calories">Calories:</string>
 </resources>

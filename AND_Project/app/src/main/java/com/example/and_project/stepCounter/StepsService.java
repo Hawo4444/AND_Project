@@ -41,7 +41,7 @@ public class StepsService extends Service implements SensorEventListener
         }
         else
         {
-            Toast.makeText(this, "No step detector available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Step Detector Available", Toast.LENGTH_SHORT).show();
         }
 
         date = checkDate();
@@ -97,7 +97,8 @@ public class StepsService extends Service implements SensorEventListener
 
     private String checkDate()
     {
-        Calendar mCalendar = Calendar.getInstance();
-        return date = mCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (mCalendar.get(Calendar.MONTH) + 1) + "/" + mCalendar.get(Calendar.YEAR);
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return date = sdf.format(cal.getTime());
     }
 }

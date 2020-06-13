@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.and_project.database.Meals;
 import com.example.and_project.database.MealsRepository;
+import com.example.and_project.domain.Meals;
 
 import java.util.List;
 

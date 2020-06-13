@@ -6,6 +6,8 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.example.and_project.domain.Meals;
+
 import java.util.List;
 
 @Dao
@@ -17,6 +19,6 @@ public interface MealsDao
     @Delete
     void delete(Meals meals);
 
-    @Query("SELECT * FROM Meals WHERE Date=:date")
+    @Query("SELECT * FROM Meals WHERE Date LIKE :date || '%'")
     LiveData<List<Meals>> getAllMealsForDate(String date);
 }
