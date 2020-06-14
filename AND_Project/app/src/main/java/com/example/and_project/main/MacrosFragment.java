@@ -1,6 +1,5 @@
 package com.example.and_project.main;
 
-
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -21,16 +20,16 @@ import java.util.List;
 
 public class MacrosFragment extends Fragment
 {
-    private SharedViewModel sharedViewModel;
-    TextView calories;
-    TextView carbs;
-    TextView fats;
-    TextView proteins;
+    private SharedViewModel mSharedViewModel;
+    private TextView mCaloriesTextView;
+    private TextView mCarbsTextView;
+    private TextView mFatsTextView;
+    private TextView mProteinsTextView;
 
-    TextView caloriesAmount;
-    TextView carbsAmount;
-    TextView fatsAmount;
-    TextView proteinsAmount;
+    private TextView mCaloriesGoalTextView;
+    private TextView mCarbsGoalTextView;
+    private TextView mFatsGoalTextView;
+    private TextView mProteinsGoalTextView;
 
     public MacrosFragment()
     {
@@ -43,15 +42,15 @@ public class MacrosFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_macros, container, false);
 
-        calories = view.findViewById(R.id.calories);
-        carbs = view.findViewById(R.id.carb_macro);
-        fats = view.findViewById(R.id.fat_macro);
-        proteins = view.findViewById(R.id.protein_macro);
+        mCaloriesTextView = view.findViewById(R.id.calories);
+        mCarbsTextView = view.findViewById(R.id.carb_macro);
+        mFatsTextView = view.findViewById(R.id.fat_macro);
+        mProteinsTextView = view.findViewById(R.id.protein_macro);
 
-        caloriesAmount = view.findViewById(R.id.calories_amount);
-        carbsAmount = view.findViewById(R.id.carb_macro_amount);
-        fatsAmount = view.findViewById(R.id.fat_macro_amount);
-        proteinsAmount = view.findViewById(R.id.protein_macro_amount);
+        mCaloriesGoalTextView = view.findViewById(R.id.calories_amount);
+        mCarbsGoalTextView = view.findViewById(R.id.carb_macro_amount);
+        mFatsGoalTextView = view.findViewById(R.id.fat_macro_amount);
+        mProteinsGoalTextView = view.findViewById(R.id.protein_macro_amount);
 
         return view;
     }
@@ -60,50 +59,44 @@ public class MacrosFragment extends Fragment
     public void onActivityCreated(@Nullable Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
-        sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-        sharedViewModel.getAllItems().observe(getViewLifecycleOwner(), new Observer<List<Meals>>()
+        mSharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+        mSharedViewModel.getAllItems().observe(getViewLifecycleOwner(), new Observer<List<Meals>>()
         {
-            int caloriesVar, carbsVar, fatsVar, proteinsVar = 0;
             @Override
             public void onChanged(List<Meals> meals)
             {
-                caloriesVar = 0;
-                carbsVar = 0;
-                fatsVar = 0;
-                proteinsVar = 0;
-                for(int i = 0; i < meals.size(); i++)
-                {
-                    Meals meal = meals.get(i);
-                    caloriesVar += meal.calories;
-                    carbsVar += meal.carbohydrate;
-                    fatsVar += meal.fat;
-                    proteinsVar += meal.protein;
-                }
-                calories.setText(String.valueOf(caloriesVar));
-                carbs.setText(String.valueOf(carbsVar));
-                fats.setText(String.valueOf(fatsVar));
-                proteins.setText(String.valueOf(proteinsVar));
+                int caloriesAmount = (int) meals.stream().mapToDouble(Meals::getCalories).sum();
+                mCaloriesTextView.setText(String.valueOf(caloriesAmount));
+
+                int carbsAmount = (int) meals.stream().mapToDouble(Meals::getCarbohydrate).sum();
+                mCarbsTextView.setText(String.valueOf(carbsAmount));
+
+                int fatsAmount = (int) meals.stream().mapToDouble(Meals::getFat).sum();
+                mFatsTextView.setText(String.valueOf(fatsAmount));
+
+                int proteinsAmount = (int) meals.stream().mapToDouble(Meals::getProtein).sum();
+                mProteinsTextView.setText(String.valueOf(proteinsAmount));
             }
         });
 
-        sharedViewModel.getGoals().observe(getViewLifecycleOwner(), new Observer<Goals>()
+        mSharedViewModel.getGoals().observe(getViewLifecycleOwner(), new Observer<Goals>()
         {
             @Override
             public void onChanged(Goals goals)
             {
                 if (goals != null)
                 {
-                    caloriesAmount.setText(getString(R.string.dash_calories, goals.getGoalCalories()));
-                    carbsAmount.setText(getString(R.string.dash_macros, goals.getGoalCarbs()));
-                    fatsAmount.setText(getString(R.string.dash_macros, goals.getGoalFats()));
-                    proteinsAmount.setText(getString(R.string.dash_macros, goals.getGoalProtein()));
+                    mCaloriesGoalTextView.setText(getString(R.string.dash_calories, goals.getGoalCalories()));
+                    mCarbsGoalTextView.setText(getString(R.string.dash_macros, goals.getGoalCarbs()));
+                    mFatsGoalTextView.setText(getString(R.string.dash_macros, goals.getGoalFats()));
+                    mProteinsGoalTextView.setText(getString(R.string.dash_macros, goals.getGoalProtein()));
                 }
                 else
                 {
-                    caloriesAmount.setText(R.string.empty_calories);
-                    carbsAmount.setText(R.string.empty_macros);
-                    fatsAmount.setText(R.string.empty_macros);
-                    proteinsAmount.setText(R.string.empty_macros);
+                    mCaloriesGoalTextView.setText(R.string.empty_calories);
+                    mCarbsGoalTextView.setText(R.string.empty_macros);
+                    mFatsGoalTextView.setText(R.string.empty_macros);
+                    mProteinsGoalTextView.setText(R.string.empty_macros);
                 }
             }
         });

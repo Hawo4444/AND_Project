@@ -44,11 +44,12 @@ public class StepsRepository
 
     public Steps getStepsForDate(String date)
     {
-        try {
+        try
+        {
             return new GetStepsForDateAsyncTask(stepsDao).execute(date).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        }
+        catch (ExecutionException | InterruptedException e)
+        {
             e.printStackTrace();
         }
         return null;

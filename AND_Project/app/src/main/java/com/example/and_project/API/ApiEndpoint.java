@@ -10,6 +10,7 @@ import retrofit2.http.POST;
 
 public interface ApiEndpoint
 {
+    //This is the type of the content being sent and received
     String CONTENT_TYPE = "Content-Type:application/json";
     //This is the application ID that is being sent with each API request
     String APPLICATION_ID = "x-app-id:c369792c";

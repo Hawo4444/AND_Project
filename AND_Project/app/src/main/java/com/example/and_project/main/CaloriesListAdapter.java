@@ -1,29 +1,47 @@
 package com.example.and_project.main;
 
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.and_project.R;
 import com.example.and_project.domain.Meals;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class CaloriesListAdapter extends RecyclerView.Adapter<CaloriesListAdapter.ViewHolder>
+public class CaloriesListAdapter extends ListAdapter<Meals, CaloriesListAdapter.ViewHolder>
 {
-    private List<Meals> rvItemsList;
-
-    public CaloriesListAdapter(ArrayList rvItemsList)
+    public CaloriesListAdapter()
     {
-        this.rvItemsList = rvItemsList;
+        super(DIFF_CALLBACK);
     }
 
+    private static final DiffUtil.ItemCallback<Meals> DIFF_CALLBACK = new DiffUtil.ItemCallback<Meals>()
+    {
+        @Override
+        public boolean areItemsTheSame(@NonNull Meals oldItem, @NonNull Meals newItem)
+        {
+            return oldItem.getDate().equals(newItem.getDate());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Meals oldItem, @NonNull Meals newItem)
+        {
+            return oldItem.getFoodName().equals(newItem.getFoodName()) &&
+                    oldItem.getDate().equals(newItem.getDate()) &&
+                    oldItem.getCalories() == newItem.getCalories() &&
+                    oldItem.getCarbohydrate() == newItem.getCarbohydrate() &&
+                    oldItem.getFat() == newItem.getFat() &&
+                    oldItem.getProtein() == newItem.getProtein() &&
+                    oldItem.getGramsQuantity() == newItem.getGramsQuantity();
+        }
+    };
+
+    @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -34,25 +52,14 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<CaloriesListAdapte
     @Override
     public void onBindViewHolder(@NonNull CaloriesListAdapter.ViewHolder holder, int position)
     {
-        holder.mealName.setText(rvItemsList.get(position).getFoodName());
-        holder.mealAmount.setText((rvItemsList.get(position).getGramsQuantity() + "g"));
-        holder.mealCalories.setText((Math.round(rvItemsList.get(position).getCalories()) + " kcal"));
-    }
-
-    public int getItemCount()
-    {
-        return rvItemsList.size();
-    }
-
-    public void setCaloriesPageList(List<Meals> caloriesList)
-    {
-        rvItemsList = caloriesList;
-        notifyDataSetChanged();
+        holder.mealName.setText(getItem(position).getFoodName());
+        holder.mealAmount.setText((getItem(position).getGramsQuantity() + "g"));
+        holder.mealCalories.setText((Math.round(getItem(position).getCalories()) + " kcal"));
     }
 
     public Meals getMealAt(int position)
     {
-        return rvItemsList.get(position);
+        return getItem(position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder

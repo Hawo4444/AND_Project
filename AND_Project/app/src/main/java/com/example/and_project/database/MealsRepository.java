@@ -85,11 +85,11 @@ public class MealsRepository
 
     public LiveData<List<Meals>> getMealsLiveDataForDate(String date)
     {
-        try {
+        try
+        {
             return new GetMealsLiveDataForDateAsyncTask(mealsDao).execute(date).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e)
+        {
             e.printStackTrace();
         }
         return null;
@@ -113,11 +113,12 @@ public class MealsRepository
 
     public List<Meals> getMealsForDate(String date)
     {
-        try {
+        try
+        {
             return new GetMealsForDateAsyncTask(mealsDao).execute(date).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        }
+        catch (ExecutionException | InterruptedException e)
+        {
             e.printStackTrace();
         }
         return null;

@@ -2,7 +2,7 @@ package com.example.and_project.domain;
 
 public class ApiBody
 {
-    String query;
+    private String query;
 
     public ApiBody(String query)
     {

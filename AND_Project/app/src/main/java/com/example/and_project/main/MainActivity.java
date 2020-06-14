@@ -21,11 +21,9 @@ import com.example.and_project.profile.ProfileActivity;
 import com.example.and_project.R;
 import com.example.and_project.stepCounter.StepCounterActivity;
 import com.example.and_project.settings.SettingsActivity;
-import com.example.and_project.stepCounter.StepsService;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FirebaseAuth.AuthStateListener
 {

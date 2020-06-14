@@ -24,7 +24,7 @@ public class StepsService extends Service implements SensorEventListener
 
     private int stepsCountForToday;
     private String date;
-    SimpleDateFormat formatter;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     private StepsRepository repository;
 
@@ -98,7 +98,6 @@ public class StepsService extends Service implements SensorEventListener
     private String checkDate()
     {
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return date = sdf.format(cal.getTime());
     }
 }

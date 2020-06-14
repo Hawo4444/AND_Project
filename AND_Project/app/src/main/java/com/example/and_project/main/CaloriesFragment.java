@@ -1,6 +1,5 @@
 package com.example.and_project.main;
 
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -51,7 +50,7 @@ public class CaloriesFragment extends Fragment
         DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(mCaloriesList.getContext(), layoutManager.getOrientation());
         mCaloriesList.addItemDecoration(mDividerItemDecoration);
 
-        mCaloriesListAdapter = new CaloriesListAdapter(items);
+        mCaloriesListAdapter = new CaloriesListAdapter();
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mCaloriesList);
         mCaloriesList.setAdapter(mCaloriesListAdapter);
 
@@ -68,7 +67,7 @@ public class CaloriesFragment extends Fragment
             @Override
             public void onChanged(List<Meals> meals)
             {
-                mCaloriesListAdapter.setCaloriesPageList(meals);
+                mCaloriesListAdapter.submitList(meals);
             }
         });
     }
@@ -86,7 +85,6 @@ public class CaloriesFragment extends Fragment
         {
             sharedViewModel.deleteMeal(mCaloriesListAdapter.getMealAt(viewHolder.getAdapterPosition()));
             Toast.makeText(getContext(), "Meal Deleted", Toast.LENGTH_SHORT).show();
-            mCaloriesListAdapter.notifyDataSetChanged();
         }
     };
 }

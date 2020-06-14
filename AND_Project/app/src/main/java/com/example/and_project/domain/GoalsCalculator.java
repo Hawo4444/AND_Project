@@ -23,7 +23,7 @@ public class GoalsCalculator {
     {
         return ((int) (goalCalories * 0.5 / 4));
     }
-    
+
     private static int getFatsGoal(int goalCalories)
     {
         return ((int) (goalCalories * 0.3 / 9));

@@ -2,7 +2,6 @@ package com.example.and_project.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.preference.PreferenceFragmentCompat;
 
 import android.os.Bundle;
 
@@ -10,7 +9,6 @@ import com.example.and_project.R;
 
 public class SettingsActivity extends AppCompatActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -21,7 +21,6 @@ import java.util.List;
 
 public class LogInActivity extends AppCompatActivity
 {
-
     private static final int RC_SIGN_IN = 1;
     private static final int RC_SIGN_OUT = 2;
 
@@ -74,7 +73,7 @@ public class LogInActivity extends AppCompatActivity
                 // ...
             }
             else
-                {
+            {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
                 // response.getError().getErrorCode() and handle the error.
