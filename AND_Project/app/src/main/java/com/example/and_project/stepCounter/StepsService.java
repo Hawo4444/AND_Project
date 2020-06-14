@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.example.and_project.database.Steps;
+import com.example.and_project.domain.Steps;
 import com.example.and_project.database.StepsRepository;
 
 import java.text.SimpleDateFormat;

@@ -9,14 +9,27 @@
 
     <include layout="@layout/toolbar" />
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/data_for_date" />
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/data_for_date"
+            android:textStyle="bold"
+            android:textColor="@color/colorDarkText"
+            android:textSize="25sp"
+            android:layout_marginStart="8dp"
+            android:gravity="center_vertical"/>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/historical_data_list"/>
+        android:id="@+id/historical_data_rv"/>
 
 </LinearLayout>

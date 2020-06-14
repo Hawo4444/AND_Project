@@ -51,16 +51,14 @@ public class AddMealActivity extends AppCompatActivity
 
             if(meal == null)
             {
-                errorText.setText(R.string.add_meal_error);
+                setErrorText();
             }
             else
             {
                 Calendar cal = Calendar.getInstance();
                 String date = sdf.format(cal.getTime());
                 meal.setDate(date);
-                System.out.println("+++++++++++++++++++++" + meal.getDate());
-                System.out.println("+++++++++++++++++++++" + meal.getFoodName());
-                errorText.setText("");
+                clearErrorText();
                 repository.insertMeal(meal);
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
@@ -68,9 +66,18 @@ public class AddMealActivity extends AppCompatActivity
         }
         catch (Exception e)
         {
-            errorText.setText(R.string.add_meal_error);
+            setErrorText();
             e.printStackTrace();
         }
+    }
 
+    private void setErrorText()
+    {
+        errorText.setText(R.string.add_meal_error);
+    }
+
+    private void clearErrorText()
+    {
+        errorText.setText("");
     }
 }

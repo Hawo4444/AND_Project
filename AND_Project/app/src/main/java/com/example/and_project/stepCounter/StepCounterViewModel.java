@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.and_project.database.Steps;
+import com.example.and_project.domain.Steps;
 import com.example.and_project.database.StepsRepository;
 
 import java.util.List;

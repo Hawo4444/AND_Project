@@ -61,7 +61,6 @@ public class CaloriesListAdapter extends RecyclerView.Adapter<CaloriesListAdapte
         TextView mealAmount;
         TextView mealCalories;
 
-
         ViewHolder(View itemView)
         {
             super(itemView);

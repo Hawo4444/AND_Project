@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.and_project.database.Goals;
+import com.example.and_project.domain.Goals;
 import com.example.and_project.database.GoalsRepository;
 import com.example.and_project.database.MealsRepository;
 import com.example.and_project.domain.Meals;
@@ -29,7 +29,7 @@ public class SharedViewModel extends AndroidViewModel
         mealsRepository = MealsRepository.getInstance(getApplication());
         goalsRepository = GoalsRepository.getInstance(getApplication());
 
-        items = mealsRepository.getMealsForDate(getCurrentDate());
+        items = mealsRepository.getMealsLiveDataForDate(getCurrentDate());
         goals = goalsRepository.getGoals();
     }
 

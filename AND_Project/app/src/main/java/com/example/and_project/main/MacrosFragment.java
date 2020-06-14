@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.and_project.R;
-import com.example.and_project.database.Goals;
+import com.example.and_project.domain.Goals;
 import com.example.and_project.domain.Meals;
 
 import java.util.List;

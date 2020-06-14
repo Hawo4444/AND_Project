@@ -1,4 +1,4 @@
-package com.example.and_project.database;
+package com.example.and_project.domain;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

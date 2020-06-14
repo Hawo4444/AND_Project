@@ -20,5 +20,8 @@ public interface MealsDao
     void delete(Meals meals);
 
     @Query("SELECT * FROM Meals WHERE Date LIKE :date || '%'")
-    LiveData<List<Meals>> getAllMealsForDate(String date);
+    LiveData<List<Meals>> getAllMealsLiveDataForDate(String date);
+
+    @Query("SELECT * FROM Meals WHERE Date LIKE :date || '%'")
+    List<Meals> getAllMealsForDate(String date);
 }

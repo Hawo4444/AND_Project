@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.and_project.R;
-import com.example.and_project.database.Goals;
+import com.example.and_project.domain.Goals;
 
 public class GoalsActivity extends AppCompatActivity
 {

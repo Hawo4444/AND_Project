@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 
-import com.example.and_project.database.Goals;
+import com.example.and_project.domain.Goals;
 import com.example.and_project.database.GoalsRepository;
 
 public class GoalsViewModel extends AndroidViewModel

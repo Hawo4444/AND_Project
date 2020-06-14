@@ -2,28 +2,16 @@ package com.example.and_project.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.preference.PreferenceManager;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.and_project.R;
-import com.example.and_project.database.Goals;
 import com.example.and_project.database.GoalsRepository;
-import com.example.and_project.database.Steps;
-import com.example.and_project.main.MainActivity;
 
-import java.util.List;
-
-import static com.example.and_project.main.GoalsCalculator.calculateGoals;
+import static com.example.and_project.domain.GoalsCalculator.calculateGoals;
 
 public class ProfileActivity extends AppCompatActivity
 {

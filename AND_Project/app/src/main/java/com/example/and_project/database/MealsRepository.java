@@ -2,7 +2,6 @@ package com.example.and_project.database;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -38,18 +37,6 @@ public class MealsRepository
             instance = new MealsRepository(application);
         }
         return instance;
-    }
-
-    public LiveData<List<Meals>> getMealsForDate(String date)
-    {
-        try {
-            return new GetMealsForDateAsyncTask(mealsDao).execute(date).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public void insertMeal(Meals meal)
@@ -96,7 +83,47 @@ public class MealsRepository
         }
     }
 
-    private static class GetMealsForDateAsyncTask extends AsyncTask<String, Void, LiveData<List<Meals>>>
+    public LiveData<List<Meals>> getMealsLiveDataForDate(String date)
+    {
+        try {
+            return new GetMealsLiveDataForDateAsyncTask(mealsDao).execute(date).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static class GetMealsLiveDataForDateAsyncTask extends AsyncTask<String, Void, LiveData<List<Meals>>>
+    {
+        private MealsDao mealsDao;
+
+        private GetMealsLiveDataForDateAsyncTask(MealsDao mealsDao)
+        {
+            this.mealsDao = mealsDao;
+        }
+
+        @Override
+        protected LiveData<List<Meals>> doInBackground(String... strings)
+        {
+            return mealsDao.getAllMealsLiveDataForDate(strings[0]);
+        }
+    }
+
+    public List<Meals> getMealsForDate(String date)
+    {
+        try {
+            return new GetMealsForDateAsyncTask(mealsDao).execute(date).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static class GetMealsForDateAsyncTask extends AsyncTask<String, Void, List<Meals>>
     {
         private MealsDao mealsDao;
 
@@ -106,7 +133,7 @@ public class MealsRepository
         }
 
         @Override
-        protected LiveData<List<Meals>> doInBackground(String... strings)
+        protected List<Meals> doInBackground(String... strings)
         {
             return mealsDao.getAllMealsForDate(strings[0]);
         }

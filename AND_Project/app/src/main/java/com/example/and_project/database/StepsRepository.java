@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.and_project.domain.Steps;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 

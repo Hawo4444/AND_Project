@@ -49,8 +49,8 @@
     <string name="add_an_amount">Amount</string>
     <string name="add_meal_error">Invalid Entry, Please Try Again</string>
     <string name="calories">Calories:</string>
-    <string name="empty_calories">0 kcal</string>
-    <string name="empty_macros">0g</string>
+    <string name="empty_calories">/0 kcal</string>
+    <string name="empty_macros">/0g</string>
     <string name="dash_calories">/%1$d kcal</string>
     <string name="dash_macros">/%1$dg</string>
     <string name="calories_unit_goal">%1$d kcal</string>
