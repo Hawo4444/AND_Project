@@ -9,8 +9,8 @@ import static org.junit.Assert.*;
 
 public class GoalsUnitTest
 {
-    final int lowerWeight = 40;
-    final int higherWeight = 50;
+    private final int lowerWeight = 40;
+    private final int higherWeight = 50;
 
     //Goals for gaining weight
     @Test
